@@ -1,0 +1,10 @@
+.para{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 50px;
+    font-weight: 500;
+    font-style: italic;
+    line-height: 50px;
+    text-align: center;
+    text-decoration: underline;
+    text-transform: lowercase;
+}

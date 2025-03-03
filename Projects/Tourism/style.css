@@ -1,0 +1,16 @@
+.bg-home-container{
+    background-image: url("https://ik.imagekit.io/9muwkffn9/REVAMP-MERN%20Stack/sea-ocean.webp");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 300px;
+    height: 500px;
+    margin: 5px;
+}
+.bg-fav-container{
+    background-image: url("https://ik.imagekit.io/9muwkffn9/REVAMP-MERN%20Stack/taj-mahal.webp");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 300px;
+    height: 500px;
+    margin: 5px;
+}

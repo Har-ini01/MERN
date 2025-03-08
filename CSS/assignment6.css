@@ -1,0 +1,7 @@
+.chatbg{
+    background-image: url("https://ik.imagekit.io/9muwkffn9/REVAMP-MERN%20Stack/chatbg.png");
+    background-size: contain;
+    height: 550px;
+    width: 375px;
+    margin: 10px;
+}   

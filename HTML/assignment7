@@ -1,0 +1,47 @@
+HTML
+WHAT IS HTML - HyperText Markup Language
+WHY HTML IS USED - structures web content
+What is Emmet & List 5 Emmet - Emmet --> Shortcut (e.g: ! → Boilerplate, ul>li*5 → Creates a list with 5 items, div.container → <div class="container"></div>, 
+a[href="https://example.com"] → Creates a link,p{Hello World} → <p>Hello World</p>)
+SHORT CUT CREATE of Emmet Boiler plate of HTML - !/html:5
+WHAT STRUCTURE OF HTML
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Head Section -->
+</head>
+<body>
+    <!-- Body Section -->
+</body>
+</html>
+WHAT IS **HEAD** TAG - contains metadata, title, links to CSS, and scripts.
+WHAT IS BODY  - contains the visible content of the web page.
+IMPORTANT 3 ELEMENTS OR TAGS - <html>, <head>, <body>
+WHAT IS DIFFERENT B/W ELEMENTS & TAGS IN HTML
+Tag: The actual markup (<p>, <h1>, <a>)
+Element: The tag with content (<p>Hello</p>)
+CSS
+WHAT IS CSS - Cascading Style Sheets
+WHY IS CSS - used to style HTML elements
+HOW TO CONNECT HTML & CSS , Tell the emmet Shortcut - link:css
+HOW TO GET FONT & COLOR , IMAGE, CDN
+  Fonts: Google Fonts (fonts.google.com)
+  Colors: CSS or color palette tools
+  Images:<img> tag
+  CDN: Use Bootstrap, Tailwind, or other CDN links
+BASIC CSS FAMILY : Text Family, Color & Background Family, Box Model
+  Text Family: font-size, font-weight, line-height
+  Color & Background Family: color, background-color, background-image
+  Box Model: margin, padding, border, width, height
+WHEN TO USE **BACKGROUND IMG** VS **IMG TAG**
+  background-image → Use when you need to place text over an image.  
+  <img> tag → Use when the image itself is the content, as text cannot be placed inside it.
+WHAT IS LAYOUT & Explain About flexbox Properties
+Layout defines page structure using utility classes (Flexbox, Grid).  
+Flexbox Properties 
+  - flex → Enables Flexbox  
+  - flex-row / flex-col → Sets direction  
+  - justify-center → Aligns items horizontally  
+  - items-center → Aligns items vertically  
+  - flex-wrap → Controls wrapping
+WHAT IS TAILWIND CSS & WHY IS IT USED - Tailwind CSS is a utility-first CSS framework used for fast and responsive styling.

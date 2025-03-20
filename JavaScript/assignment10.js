@@ -24,7 +24,6 @@ console.log("===============")
 -Write a multi-line comment explaining the purpose of a function you create in the next step.*/
 
 
-
 /*4.Operations:
 -Create two variables, num1 and num2, and assign them numerical values.
 -Perform addition, subtraction, multiplication, and division operations on these variables.
@@ -78,6 +77,7 @@ else{
 }
 console.log("===============")
 
+
 /*8.FOR LOOP:
 - Use a for loop to print the numbers from 1 to 5 in the console.*/
 
@@ -90,6 +90,6 @@ console.log("===============")
 /*9.Loose vs Strict Equality:
 - Explain the difference between loose equality (==) and strict equality (===) with examples.*/
 
-console.log(5 == "5") //true - compares only value
-console.log(5 === "5") //false - compares value and datatype
+console.log(5 == "5")  //true - compares only value
+console.log(5 === "5")  //false - compares value and datatype
 console.log("===============")

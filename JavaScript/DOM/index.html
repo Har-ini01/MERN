@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body>
+    <h1>Heading</h1>
+
+    <h2 id="heading">Heading</h2>
+    <button id="btn">Change Text</button>
+    <script>
+        //<h2 id="heading">Heading</h2>
+        const headingElement = document.getElementById("heading");
+        const btnElement = document.getElementById("btn")
+        console.log(headingElement)
+        headingElement.textContent ="Hello World" 
+        btnElement.addEventListener("click",() =>{
+            console.log("button clicked")
+        })
+    </script>
+</body>
+</html>

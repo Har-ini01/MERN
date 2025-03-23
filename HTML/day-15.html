@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day-15</title>
+    <link rel="stylesheet" href="../CSS/day-15.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <!-- Variables in CSS -->
+    <h1 class="heading">Heading</h1>
+    <p class="paragraph">Test</p>
+
+    <!-- Variables in Tailwind CSS -->
+    <h1 class="bg-secondary">Heading</h1>
+    <p class="bg-primary">Test</p>
+
+    <!-- Box Sizing -->
+    <div>
+      <p class="box-1">Box-1</p>
+    </div>
+
+    <div>
+      <p class="box-2">Box-2</p>
+    </div>
+
+    <!-- Types of selectors
+        1. Class ==> .
+        2. Id ==> #
+        3. universal ==> *
+        4. Pseudo ==> :
+        5. Element Selector ==> p, h1
+        -->
+
+    <!-- Id selector -->
+    <p id="para">Id Selector</p>
+
+    <!-- Element selector -->
+    <p>Paragraph</p>
+    <h1>Heading1</h1>
+
+    <!-- Cursor -->
+    <button class="cursor-pointer ... bg-green-500 p-5">Submit</button>
+    <button class="cursor-progress ... bg-green-500 p-5">Saving...</button>
+    <button class="cursor-not-allowed ... disabled bg-green-500 p-5">Confirm</button>
+
+    <!-- Box shadows & shadows -->
+     <div class="flex flex-row justify-center items-center gap-8">
+        <div class="shadow-md bg-white p-5">shadows</div>
+        <div class="shadow-lg bg-white p-5">shadows</div>
+        <div class="shadow-xl bg-white p-5">shadows</div>
+        <div class="shadow-2xl bg-white p-5">shadows</div>
+     </div>
+
+    <!-- Overflow -->
+     <!-- Intensive Sizing -->
+     <p class="bg-pink-500">Overflow</p> <!-- Block level element -->
+     <span class="bg-blue-400">Overflow</span> <!-- Inline element -->
+    <!-- Extensive Sizing -->
+     <div class="flex flex-row gap-4">
+        <p class="bg-green-400 h-[200px] w-[200px]">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint nobis eligendi iste ipsam ut, adipisci exercitationem veritatis atque sunt eos natus modi ducimus necessitatibus rerum autem omnis eius labore, odio repellat odit a, expedita recusandae? Sint explicabo, ipsum aliquid unde voluptas non vel fugiat quam rem facere dolores ullam inventore?</p>
+        <!-- Way -1 -> overflow-hidden -->
+        <p class="bg-purple-400 h-[200px] w-[200px] overflow-hidden">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint nobis eligendi iste ipsam ut, adipisci exercitationem veritatis atque sunt eos natus modi ducimus necessitatibus rerum autem omnis eius labore, odio repellat odit a, expedita recusandae? Sint explicabo, ipsum aliquid unde voluptas non vel fugiat quam rem facere dolores ullam inventore?</p>
+        <!-- Way -2 -> overflow-auto -> navbar on required side-->
+        <p class="bg-yellow-200 h-[200px] w-[200px] overflow-auto">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint nobis eligendi iste ipsam ut, adipisci exercitationem veritatis atque sunt eos natus modi ducimus necessitatibus rerum autem omnis eius labore, odio repellat odit a, expedita recusandae? Sint explicabo, ipsum aliquid unde voluptas non vel fugiat quam rem facere dolores ullam inventore?</p>
+        <!-- Way -2 -> overflow-scroll -> navbar on both side-->
+        <p class="bg-orange-400 h-[200px] w-[200px] overflow-scroll">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint nobis eligendi iste ipsam ut, adipisci exercitationem veritatis atque sunt eos natus modi ducimus necessitatibus rerum autem omnis eius labore, odio repellat odit a, expedita recusandae? Sint explicabo, ipsum aliquid unde voluptas non vel fugiat quam rem facere dolores ullam inventore?</p>
+     </div>
+    
+     <!-- Transition and Animation 
+        - https://animista.net/
+    --> 
+    <div class="flex flex-row gap-4 mt-[350px]">
+      <p class="box-1 rotate-in-2-cw">Box-3</p>
+      <p class="box-1 rotate-center">Box-4</p>
+    </div>
+
+    <!-- Specificity and inheritance -->
+     <p class="car">Car</p>
+     <h1>CSS Specificity</h1>
+     <img src="https://ik.imagekit.io/9muwkffn9/REVAMP-MERN%20Stack/1_T7MNqRbrm14cqtpb949JJQ.png" alt="">
+     <!-- CSS inheritance
+        - Refer -> https://www.w3schools.com/cssref/css_inherit.php
+                -> https://www.geeksforgeeks.org/how-to-apply-concept-of-inheritance-in-css/
+      -->
+  </body>
+</html>

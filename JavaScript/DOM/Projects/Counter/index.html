@@ -35,12 +35,25 @@
         console.log("counterPlus Btn")
         counterValue.textContent = parseInt(counterValue.textContent) + 1
         counterValue.style.color = "#008000"
+        if (parseInt(counterValue.textContent) == 0){
+            counterValue.style.color = "black"
+        }
+        if(parseInt(counterValue.textContent) < 0){
+            counterValue.style.color = "#ff0000"
+        }
+        
     })
 
     counterMinus.addEventListener("click",()=>{
         console.log("counterMinus Btn")
         counterValue.textContent = parseInt(counterValue.textContent) - 1
         counterValue.style.color = "#ff0000"
+        if (parseInt(counterValue.textContent) == 0){
+            counterValue.style.color = "black"
+        }
+        if(parseInt(counterValue.textContent) > 0){
+            counterValue.style.color = "#008000"
+        }
     })
 
     counterReset.addEventListener("click",()=>{

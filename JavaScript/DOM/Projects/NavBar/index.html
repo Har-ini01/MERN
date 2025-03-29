@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>NavBar</title>
+  </head>
+  <body>
+    <div class="2xl:container mx-auto bg-green-300">
+      <div
+        class="w-[90%] mx-auto grid grid-cols-1 md:grid-cols-2 h-[10vh] px-2"
+      >
+        <div
+          class="flex flex-row justify-between items-center gap-3  my-[2vh]"
+        >
+          <p>Logo</p>
+          <div class="md:hidden">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="1em"
+              height="1em"
+              {...props}
+              id="menu" class="hidden"
+            > 
+              <path
+                fill="currentColor"
+                d="M3 18h18v-2H3zm0-5h18v-2H3zm0-7v2h18V6z"
+              ></path>
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="1em"
+              height="1em"
+              {...props}
+              id="cross" 
+            >
+              <path
+                fill="currentColor"
+                d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12z"
+              ></path>
+            </svg>
+          </div>
+        </div>
+       
+        <div
+          class="flex flex-col md:flex-row justify-center md:justify-end items-center md:items-center gap-3 my-2" id="content"
+        >
+          <p>Home</p>
+          <p>About</p>
+          <p>Contact</p>
+          <p>Blog</p>
+          <p>Product</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+        const menuElement = document.getElementById("menu")
+        const crossElement = document.getElementById("cross")
+        const contentElement = document.getElementById("content")
+
+        menuElement.addEventListener("click",()=>{
+            menuElement.classList.toggle("hidden")
+            crossElement.classList.toggle("hidden")
+            contentElement.classList.toggle("hidden")
+        })
+
+        crossElement.addEventListener("click",()=>{
+            menuElement.classList.toggle("hidden")
+            crossElement.classList.toggle("hidden")
+            contentElement.classList.toggle("hidden")
+        })
+    </script>
+  </body>
+</html>

@@ -28,13 +28,21 @@
     const counterValue = document.getElementById("value")
     const counterReset = document.getElementById("reset")
     
-    let id = setTimeout(()=>{
+    let id = setInterval(()=>{
         counterValue.textContent = parseInt(counterValue.textContent)+1
-    },4000)
+    },1000)
 
     counterReset.addEventListener("click",()=>{
-        clearTimeout(id)
+        clearInterval(id)
     })
+
+    // let id = setTimeout(()=>{
+    //     counterValue.textContent = parseInt(counterValue.textContent)+1
+    // },4000)
+
+    // counterReset.addEventListener("click",()=>{
+    //     clearTimeout(id)
+    // })
 </script>
 </body>
 </html>

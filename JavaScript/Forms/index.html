@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!--FireBase SDK-->
+    <script
+      defer
+      src="https://www.gstatic.com/firebasejs/8.10.1/firebase.js"
+    ></script>
+    <script
+      defer
+      src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"
+    ></script>
+    <script
+      defer
+      src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"
+    ></script>
+  </head>
+  <body>
+    <!--
+         Step 1: e.preventDefault() - Stop Reloading
+
+         Step 2: Get all the data ==> input.value
+
+         Step 3: To validate all the data from Step 2
+            Types:
+                1.Basic Validation
+                    - type -> error message untill valid info is given can't be submitted
+                2.Regex Validation - to improve UI of error msg (eg:passwords - require spl character, numbers, caps)
+                    - https://uibakery.io/regex-library/email
+     -->
+    <form id="form" class="p-5 space-y-4">
+      <div class="flex flex-col justify-start items-start">
+        <!-- Name -->
+        <label for="name">Name</label>
+        <input id="name" class="border-black border-[1px]" />
+      </div>
+      <div class="flex flex-col justify-start items-start">
+        <!-- Email -->
+        <label for="email">Email</label>
+        <input id="email" class="border-black border-[1px]" />
+        <p id="mailError" class="text-red-400"></p>
+      </div>
+      <div class="flex flex-col justify-start items-start">
+        <!-- Message -->
+        <label for="message">Message</label>
+        <textarea id="message" class="border-black border-[1px]"></textarea>
+      </div>
+      <button id="btn" class="bg-black rounded-lg text-white py-1 px-3">
+        Submit
+      </button>
+
+      <script>
+        const nameElement = document.getElementById("name");
+        const emailElement = document.getElementById("email");
+        const messageElement = document.getElementById("message");
+        const formElement = document.getElementById("form");
+        const mailElement = document.getElementById("mailError");
+
+        function validateData(name, email, message) {
+          console.log("validateData:", name, email, message);
+          let isValid = true;
+
+          var regex =
+            /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
+          regex.test("hello@uibakery.io."); // returns false
+          regex.test("hello@192.168.0.1"); // returns true
+
+          if (!regex.test(email)) {
+            mailElement.textContent = "Please Enter a Valid Email Address";
+            isValid = false;
+          }
+          return isValid;
+        }
+        function SaveDataToDB(name, email, message) {
+          const firebaseConfig = {
+            apiKey: "AIzaSyD_guAysxqQDluBc2Aej1MEEl5uYfZG3gA",
+            authDomain: "mernstack-forms.firebaseapp.com",
+            databaseURL:
+              "https://mernstack-forms-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "mernstack-forms",
+            storageBucket: "mernstack-forms.firebasestorage.app",
+            messagingSenderId: "853864869058",
+            appId: "1:853864869058:web:1bfeae217377d4603bdf5b",
+          };
+          if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
+          }
+          const db = firebase.database().ref("LoginForm");
+          db.push({
+            name: name,
+            email: email,
+            message: message,
+          });
+          formElement.reset();
+          mailElement.textContent = "";
+          
+        }
+        formElement.addEventListener("submit", (e) => {
+          //Change Default form behaviour
+          e.preventDefault(); //-->Prevents reloading/ refreshing of page
+        });
+
+        //Data from form
+        console.log(nameElement.value);
+        console.log(emailElement.value);
+        console.log(messageElement.value);
+
+        //Validation function
+        const res = validateData(
+          nameElement.value,
+          emailElement.value,
+          messageElement.value
+        );
+        console.log(res);
+
+        //Save the data to DB
+        if (res) {
+          SaveDataToDB();
+        }
+      </script>
+    </form>
+  </body>
+</html>

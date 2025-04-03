@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Day-1</title>
+    
+    <!-- TO INSTALL REACT VIA CDN -->
+    <!-- react.development.js -->
+    <!-- <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script> -->
+    <!-- react-dom.development.js -->
+    <!-- <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script> -->
+
+    <!-- 
+    Problems:
+    1.HTTP API CALL -> react.development.js,react-dom.development.js
+    2.Version 18 -> 20 -> when version changes shld change to new CDN link [No Version Control]
+    3.No Building Tools -> CDN Approach will not be suitable for production
+    -->
+    
+    <!-- TO INSTALL REACT VIA LOCAL STORAGE -->
+     <!-- react.development.js -->
+    <script crossorigin src="./react.production.min.js"></script>
+    <!-- react-dom.development.js -->
+    <script crossorigin src="./react-dom.production.min.js"></script>
+
+    <!-- Problem
+     1.Many libraries cannot be maintained - so we require package manager
+     -->
+
+
+<!-- Methods & Property -->
+</head>
+<body>
+    <div id="root">
+        <p id="para">Hello World!</p>
+        <!-- <button id="btn">Change Text</button> -->
+    </div>
+    <script>
+        //Using Getter Method
+        // const paraElement = document.getElementById("para");
+        // const btnElement = document.getElementById("btn")
+
+        // btnElement.addEventListener("click",()=>{
+        //     paraElement.textContent = "Hi..React"
+        // })
+
+        //Using Setter Method
+        //<p>Hello React</p>
+        const paraElement  = React.createElement("p",null,"Hello React");
+        const root = ReactDOM.createRoot(document.getElementById("root"))
+        root.render(paraElement)
+    </script>
+    
+</body>
+</html>

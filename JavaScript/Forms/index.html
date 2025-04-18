@@ -31,6 +31,8 @@
                     - type -> error message untill valid info is given can't be submitted
                 2.Regex Validation - to improve UI of error msg (eg:passwords - require spl character, numbers, caps)
                     - https://uibakery.io/regex-library/email
+              
+        Step 4:Validate the data
      -->
     <form id="form" class="p-5 space-y-4">
       <div class="flex flex-col justify-start items-start">
@@ -59,19 +61,16 @@
         const messageElement = document.getElementById("message");
         const formElement = document.getElementById("form");
         const mailElement = document.getElementById("mailError");
-
         function validateData(name, email, message) {
           console.log("validateData:", name, email, message);
-          let isValid = true;
 
           var regex =
             /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
-          regex.test("hello@uibakery.io."); // returns false
-          regex.test("hello@192.168.0.1"); // returns true
-
           if (!regex.test(email)) {
             mailElement.textContent = "Please Enter a Valid Email Address";
             isValid = false;
+          } else {
+            isValid = true;
           }
           return isValid;
         }
@@ -86,41 +85,44 @@
             messagingSenderId: "853864869058",
             appId: "1:853864869058:web:1bfeae217377d4603bdf5b",
           };
-          if (!firebase.apps.length) {
+
+          if (!firebase.apps.length){
             firebase.initializeApp(firebaseConfig);
           }
-          const db = firebase.database().ref("LoginForm");
+          const db = firebase.database().ref("LoginForm");        
           db.push({
             name: name,
             email: email,
             message: message,
           });
-          formElement.reset();
-          mailElement.textContent = "";
-          
+          formElement.reset()
+          mailElement.textContent = ""
         }
         formElement.addEventListener("submit", (e) => {
-          //Change Default form behaviour
-          e.preventDefault(); //-->Prevents reloading/ refreshing of page
+          //Change forms Default behavior
+          e.preventDefault();
+
+          //Data from form
+          console.log(nameElement.value);
+          console.log(emailElement.value);
+          console.log(messageElement.value);
+
+          //Validation function
+          const res = validateData(
+            nameElement.value,
+            emailElement.value,
+            messageElement.value
+          );
+          console.log(res);
+          //Save the data to DB
+          if (res) {
+            SaveDataToDB(
+              nameElement.value,
+              emailElement.value,
+              messageElement.value
+            );
+          }
         });
-
-        //Data from form
-        console.log(nameElement.value);
-        console.log(emailElement.value);
-        console.log(messageElement.value);
-
-        //Validation function
-        const res = validateData(
-          nameElement.value,
-          emailElement.value,
-          messageElement.value
-        );
-        console.log(res);
-
-        //Save the data to DB
-        if (res) {
-          SaveDataToDB();
-        }
       </script>
     </form>
   </body>

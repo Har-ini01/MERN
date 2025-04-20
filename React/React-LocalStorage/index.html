@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Day-1</title>
+</head>
+<body>
+    <!-- <p>Hello World React</p> -->
+    
+    <!-- TO INSTALL REACT VIA CDN -->
+
+     <!-- react.development.js -->
+     <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+   
+     <!-- react-dom.development.js -->
+     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+ 
+     <!-- 
+     Due to these reasons we  switch to local storage
+     1.HTTP API CALL -> react.development.js, react-dom.development.js
+     2.version : 18 -> 20 : Change new CDN [No Version Control]
+     3.No Building Tools -> CDN approach will not be suitable for production
+     -->
+
+     <!-- TO INSTALL REACT VIA LOCAL STORAGE -->
+
+     <!-- react.development.js -->
+     <script crossorigin src="./react.production.min.js"></script>
+   
+     <!-- react-dom.development.js -->
+     <script crossorigin src="./react-dom.production.min.js"></script>
+
+     <!-- Methods & Property -->
+      <div id="root">
+        <p id="para">Hello World</p>
+        <!-- <button id="btn">Change text</button> -->
+      </div>
+
+      <script>
+
+        //Using Getter Method
+        // const paraElement = document.getElementById("para")
+        // const buttonElement = document.getElementById("btn")
+
+        // buttonElement.addEventListener("click",()=>{
+        //     paraElement.textContent = "Hi...React"
+        // })
+
+        //Using Setter Method
+        // <p>Hello React</p>
+        const paraElement = React.createElement("p",null,"Hello React")
+        const root = ReactDOM.createRoot(document.getElementById("root"))
+        root.render(paraElement)
+      </script>
+</body>
+</html>

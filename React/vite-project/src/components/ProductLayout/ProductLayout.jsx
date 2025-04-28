@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { Link } from "react-router-dom";
 
 const ProductCard = (props) => {
   return (
     <>
       <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
         <div className="h-56 w-full">
-          <a href="#">
+          <Link to={`/products/${props.id}`}>
             <img
               className="mx-auto h-full dark:hidden"
               src={props.image}
@@ -17,7 +18,7 @@ const ProductCard = (props) => {
               src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/apple-watch-dark.svg"
               alt=""
             />
-          </a>
+          </Link>
         </div>
         <div className="pt-6">
           <div className="mb-4 flex items-center justify-between gap-4">
@@ -129,10 +130,10 @@ const ProductCard = (props) => {
           </ul>
           <div className="mt-4 flex items-center justify-between gap-4">
             <p className="text-2xl font-extrabold leading-tight text-gray-900 dark:text-white">
-              {props.price}
+              ${props.price}
             </p>
-            <button
-              type="button"
+            <Link
+              to={`/products/${props.id}`}
               className="inline-flex items-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4  focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
             >
               <svg
@@ -152,8 +153,8 @@ const ProductCard = (props) => {
                   d="M4 4h1.5L8 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm.75-3H7.5M11 7H6.312M17 4v6m-3-3h6"
                 />
               </svg>
-              Add to cart
-            </button>
+              Buy Now
+            </Link>
           </div>
         </div>
       </div>
@@ -173,7 +174,7 @@ const ProductLayout = () => {
   useEffect(() => {
     console.log("useEffect Executed");
     fetchData();
-  },[isLoading]);
+  },[]);
 
   const fetchData = async () => {
     try {
@@ -199,6 +200,7 @@ const ProductLayout = () => {
               return (
                 <ProductCard
                   key={uuidv4()}
+                  id={items.id}
                   image={items.thumbnail}
                   title={items.title}
                   price={items.price}

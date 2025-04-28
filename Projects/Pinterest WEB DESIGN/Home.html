@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pinterest</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <div class="2xl:container">
+      <div class="w-[100%] flex flex-row justify-evenly items-center gap-2 px-5 py-4 fixed top-0 left-0 z-10 bg-white shadow-md">
+             <!-- Buttons -->
+            <a href="./Home.html""><img src="https://ik.imagekit.io/9muwkffn9/Pinterest/pinterest%20icon.jpeg" alt="icon" class="h-[40px] w-[70px] hover:bg-[#f4f3f3] rounded-full"></a>
+            <button class="click-button"><a href="./Home.html">Home</a></button>
+            <button class="click-button"><a href="./Explore.html">Explore</a></button>
+            <button class="click-button"><a href="./Create.html">Create</a></button>
+
+            <script>
+                // Select all buttons
+                const buttons = document.querySelectorAll('.click-button');
+
+                // Add click event listeners
+                buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove 'active' class from all buttons
+                    buttons.forEach(btn => btn.classList.remove('active'));
+
+                    // Add 'active' class to the clicked button
+                    button.classList.add('active');
+                });
+                });
+            </script>
+            <div class="search-bar-container">
+                <!-- Search Icon -->
+                <svg
+                  viewBox="0 0 788.5 1000"
+                  fill="currentColor"
+                  class="search-icon"
+                >
+                  <path d="M772 772c20 22.667 22 43.333 6 62l-46 46c-24 21.333-46.667 21.333-68 0L474 690c-49.333 28-101.333 42-156 42-85.333 0-159.667-31.667-223-95S0 499.333 0 414s30-158.333 90-219 132.667-91 218-91 160 31.667 224 95 96 137.667 96 223c0 58.667-15.333 112.667-46 162l190 188M94 414c0 58.667 22.667 110.667 68 156s97.333 68 156 68 109-21 151-63 63-93 63-153c0-58.667-22.667-110.333-68-155s-97.333-67-156-67-109 21-151 63-63 92.333-63 151" />
+                </svg>
+            
+                <!-- Search Input -->
+                <input type="text" class="search-bar" placeholder="Search">
+            </div>
+            <div class="icon-container">
+                <div class="icon" data-name="Notifications">
+                  <svg viewBox="0 0 512 512" fill="#767676" height="30" width="30">
+                    <path d="M440.08 341.31c-1.66-2-3.29-4-4.89-5.93-22-26.61-35.31-42.67-35.31-118 0-39-9.33-71-27.72-95-13.56-17.73-31.89-31.18-56.05-41.12a3 3 0 01-.82-.67C306.6 51.49 282.82 32 256 32s-50.59 19.49-59.28 48.56a3.13 3.13 0 01-.81.65c-56.38 23.21-83.78 67.74-83.78 136.14 0 75.36-13.29 91.42-35.31 118-1.6 1.93-3.23 3.89-4.89 5.93a35.16 35.16 0 00-4.65 37.62c6.17 13 19.32 21.07 34.33 21.07H410.5c14.94 0 28-8.06 34.19-21a35.17 35.17 0 00-4.61-37.66zM256 480a80.06 80.06 0 0070.44-42.13 4 4 0 00-3.54-5.87H189.12a4 4 0 00-3.55 5.87A80.06 80.06 0 00256 480z" />
+                  </svg>
+                </div>
+                
+                <div class="icon" data-name="Messages">
+                  <svg viewBox="0 0 512 512" fill="#767676" height="30" width="30">
+                    <path d="M475.22 206.52c-10.34-48.65-37.76-92.93-77.22-124.68A227.4 227.4 0 00255.82 32C194.9 32 138 55.47 95.46 98.09 54.35 139.33 31.82 193.78 32 251.37a215.66 215.66 0 0035.65 118.76l4.35 6.05L48 480l114.8-28.56s2.3.77 4 1.42 16.33 6.26 31.85 10.6c12.9 3.6 39.74 9 60.77 9 59.65 0 115.35-23.1 156.83-65.06C457.36 365.77 480 310.42 480 251.49a213.5 213.5 0 00-4.78-44.97zM160 288a32 32 0 1132-32 32 32 0 01-32 32zm96 0a32 32 0 1132-32 32 32 0 01-32 32zm96 0a32 32 0 1132-32 32 32 0 01-32 32z" />
+                  </svg>
+                </div>
+                
+                <div class="icon" data-name="Your profile">
+                    <svg
+                    viewBox="0 0 24 24"
+                    fill="#767676"
+                    height="30"
+                    width="30"
+                    {...props}
+                  >
+                    <path d="M12 19.2c-2.5 0-4.71-1.28-6-3.2.03-2 4-3.1 6-3.1s5.97 1.1 6 3.1a7.232 7.232 0 01-6 3.2M12 5a3 3 0 013 3 3 3 0 01-3 3 3 3 0 01-3-3 3 3 0 013-3m0-3A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10c0-5.53-4.5-10-10-10z" />
+                  </svg>
+                </div>
+                <div class="icon" data-name="Accounts and more options">
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="#767676"
+                        height="30"
+                        width="30"
+                        {...props}
+                        >
+                        <path d="M16.293 9.293L12 13.586 7.707 9.293l-1.414 1.414L12 16.414l5.707-5.707z" />
+                    </svg>
+                </div>
+              </div>
+              
+        </div>
+    </div>
+    <!-- CONTENTS -->
+     <div class="w-[90%] mx-auto pr-4">
+      <div class="container pt-20">
+        
+      
+      <div class="box image-container">
+        <button class="save-button">Save</button>
+        <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/Girl%20wallpaper.jpeg" alt="img7" class="h-[425px] w-[225px] rounded-2xl"> 
+        <div class="icons">
+          <!-- First SVG Icon -->
+          <svg viewBox="0 0 1024 1024">
+            <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+          </svg>
+          <!-- Second SVG Icon -->
+          <svg
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          height="1em"
+          width="1em"
+          {...props}
+        >
+          <path fill="none" d="M0 0h24v24H0z" />
+          <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+        </svg>
+        </div>
+      </div>
+      <div class="box  image-container">
+        <button class="save-button">Save</button>
+        <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/_eyes%20_art%20_aesthetic.jpeg" alt="img7" class="h-[300px] w-[225px] rounded-2xl">
+        <div class="icons">
+          <!-- First SVG Icon -->
+          <svg viewBox="0 0 1024 1024">
+            <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+          </svg>
+          <!-- Second SVG Icon -->
+          <svg
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          height="1em"
+          width="1em"
+          {...props}
+        >
+          <path fill="none" d="M0 0h24v24H0z" />
+          <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+        </svg>
+        </div>
+      </div>
+      
+      <div class="box  image-container">
+        <button class="save-button">Save</button>
+        <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/download%20(8).jpeg" alt="img7" class="h-[275px] w-[225px] rounded-2xl">
+        <div class="icons">
+          <!-- First SVG Icon -->
+          <svg viewBox="0 0 1024 1024">
+            <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+          </svg>
+          <!-- Second SVG Icon -->
+          <svg
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          height="1em"
+          width="1em"
+          {...props}
+        >
+          <path fill="none" d="M0 0h24v24H0z" />
+          <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+        </svg>
+        </div>
+      </div>
+      <div class="box  image-container">
+        <button class="save-button">Save</button>
+        <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/e4a6d6bf-a08d-43c8-a555-82c9b62a08e4.jpeg" alt="img2" class="h-[300px] w-[225px] rounded-2xl"> 
+        <div class="icons">
+          <!-- First SVG Icon -->
+          <svg viewBox="0 0 1024 1024">
+            <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+          </svg>
+          <!-- Second SVG Icon -->
+          <svg
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          height="1em"
+          width="1em"
+          {...props}
+        >
+          <path fill="none" d="M0 0h24v24H0z" />
+          <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+        </svg>
+        </div>
+      </div>
+      <div class="box  image-container">
+        <button class="save-button">Save</button>
+        <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/67cf2527-f2f4-4e32-ab51-296b68fb84b0.jpeg" alt="img2" class="h-[370px] w-[225px] rounded-2xl"> 
+        <div class="icons">
+          <!-- First SVG Icon -->
+          <svg viewBox="0 0 1024 1024">
+            <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+          </svg>
+          <!-- Second SVG Icon -->
+          <svg
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          height="1em"
+          width="1em"
+          {...props}
+        >
+          <path fill="none" d="M0 0h24v24H0z" />
+          <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+        </svg>
+        </div>
+      </div>
+      <div class="box  image-container">
+        <button class="save-button">Save</button>
+        <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/1093b441-bdd3-4e35-8f58-a279556a0f12.jpeg" alt="img2" class="h-[370px] w-[225px] rounded-2xl"> 
+        <div class="icons">
+          <!-- First SVG Icon -->
+          <svg viewBox="0 0 1024 1024">
+            <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+          </svg>
+          <!-- Second SVG Icon -->
+          <svg
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          height="1em"
+          width="1em"
+          {...props}
+        >
+          <path fill="none" d="M0 0h24v24H0z" />
+          <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+        </svg>
+        </div>
+      </div>
+      <div class="box  image-container">
+        <button class="save-button">Save</button>
+        <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/087cdfc3-3621-47ab-9f9a-d89461e9bc0c.jpeg" alt="img7" class="h-[250px] w-[225px] rounded-2xl"> 
+        <div class="icons">
+          <!-- First SVG Icon -->
+          <svg viewBox="0 0 1024 1024">
+            <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+          </svg>
+          <!-- Second SVG Icon -->
+          <svg
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          height="1em"
+          width="1em"
+          {...props}
+        >
+          <path fill="none" d="M0 0h24v24H0z" />
+          <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+        </svg>
+        </div>
+      </div>
+        <div class="box  image-container">
+          <button class="save-button">Save</button>
+          <div class="relative inline-block group">
+            <video class="w-[225] h-[370] object-cover rounded-2xl" muted loop>
+              <source src="https://ik.imagekit.io/9muwkffn9/Pinterest/14b6481c5ddd58dfeeb05e357c138e11.mp4" type="video/mp4"> <!-- MP4 format -->
+              Your browser does not support the video tag.
+          </video>
+          </div>
+          <div class="box  image-container">
+            <button class="save-button">Save</button>
+            <div class="relative inline-block group">
+              <video class="w-[225] h-[270] object-cover rounded-2xl" muted loop>
+                <source src="https://ik.imagekit.io/9muwkffn9/Pinterest/d229b54e3100fe06a58fc409bd36030a.mp4" type="video/mp4"> <!-- MP4 format -->
+                Your browser does not support the video tag.
+                  </video>
+            </div>
+            
+              <div class="icons">
+                <!-- First SVG Icon -->
+                <svg viewBox="0 0 1024 1024">
+                  <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+                </svg>
+                <!-- Second SVG Icon -->
+                <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                height="1em"
+                width="1em"
+                {...props}
+              >
+                <path fill="none" d="M0 0h24v24H0z" />
+                <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+              </svg>
+              </div>
+            </div>
+          
+      <div class="icons">
+        <!-- First SVG Icon -->
+        <svg viewBox="0 0 1024 1024">
+          <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+        </svg>
+        <!-- Second SVG Icon -->
+        <svg
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        height="1em"
+        width="1em"
+        {...props}
+      >
+        <path fill="none" d="M0 0h24v24H0z" />
+        <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+      </svg>
+      </div>
+    </div>
+      <div class="box  image-container">
+        <button class="save-button">Save</button>
+        <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/11951fd6-31dc-498b-9d0d-6ea6a5d48356.jpeg" alt="img3" class="h-[370px] w-[225px] rounded-2xl"> 
+        <div class="icons">
+          <!-- First SVG Icon -->
+          <svg viewBox="0 0 1024 1024">
+            <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+          </svg>
+          <!-- Second SVG Icon -->
+          <svg
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          height="1em"
+          width="1em"
+          {...props}
+        >
+          <path fill="none" d="M0 0h24v24H0z" />
+          <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+        </svg>
+        </div>
+      </div>
+      <div class="box image-container">
+        <button class="save-button">Save</button>
+        <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/download%20(12).jpeg" alt="img7" class="h-[325px] w-[225px] rounded-2xl"> 
+        <div class="icons">
+          <!-- First SVG Icon -->
+          <svg viewBox="0 0 1024 1024">
+            <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+          </svg>
+          <!-- Second SVG Icon -->
+          <svg
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          height="1em"
+          width="1em"
+          {...props}
+        >
+          <path fill="none" d="M0 0h24v24H0z" />
+          <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+        </svg>
+        </div>
+      </div>
+      <div class="box  image-container">
+        <button class="save-button">Save</button>
+        <div class="relative inline-block group">
+          <video class="w-[225] h-[370] object-cover rounded-2xl" muted loop>
+            <source src="https://ik.imagekit.io/9muwkffn9/Pinterest/efe27f7ef1add0225e70ec9b1f954b84.mp4/ik-video.mp4" type="video/mp4"> <!-- MP4 format -->
+            Your browser does not support the video tag.
+              </video>
+        </div>
+        
+          <div class="icons">
+            <!-- First SVG Icon -->
+            <svg viewBox="0 0 1024 1024">
+              <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+            </svg>
+            <!-- Second SVG Icon -->
+            <svg
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            height="1em"
+            width="1em"
+            {...props}
+          >
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+          </svg>
+          </div>
+  </div>
+      <div class="box  image-container">
+        <button class="save-button">Save</button>
+        <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/French%20Knot%20World%20Map%20Embroidery%20Hoop%20Art.jpeg" alt="img4" class="h-[300px] w-[225px] rounded-2xl"> 
+        <div class="icons">
+          <!-- First SVG Icon -->
+          <svg viewBox="0 0 1024 1024">
+            <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+          </svg>
+          <!-- Second SVG Icon -->
+          <svg
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          height="1em"
+          width="1em"
+          {...props}
+        >
+          <path fill="none" d="M0 0h24v24H0z" />
+          <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+        </svg>
+        </div>
+      </div>
+      <div class="box image-container">
+        <button class="save-button">Save</button>
+        <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/_Don_t%20Say%20That%20To%20Your%20Kid__%2022%20Tips%20On%20Teaching%20And%20Parenting%20From%20This%20School%20Principal.jpeg" alt="img7" class="h-[350px] w-[225px] rounded-2xl"> 
+        <div class="icons">
+          <!-- First SVG Icon -->
+          <svg viewBox="0 0 1024 1024">
+            <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+          </svg>
+          <!-- Second SVG Icon -->
+          <svg
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          height="1em"
+          width="1em"
+          {...props}
+        >
+          <path fill="none" d="M0 0h24v24H0z" />
+          <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+        </svg>
+        </div>
+      </div>
+      <div class="box image-container">
+        <button class="save-button">Save</button>
+        <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/Meet%20Bao%20The%20Chihuahua%20With%20A%20$2,500%20Wardrobe%20And%20A%20Luxurious%20Five-Star%20Hotel%20Lifestyle.jpeg" alt="img4" class="h-[300px] w-[225px] rounded-2xl"> 
+        <div class="icons">
+          <!-- First SVG Icon -->
+          <svg viewBox="0 0 1024 1024">
+            <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+          </svg>
+          <!-- Second SVG Icon -->
+          <svg
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          height="1em"
+          width="1em"
+          {...props}
+        >
+          <path fill="none" d="M0 0h24v24H0z" />
+          <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+        </svg>
+        </div>
+      </div>
+      <div class="box  image-container">
+        <button class="save-button">Save</button>
+        <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/Beautiful%20ring.jpeg" alt="img7" class="h-[225px] w-[225px] rounded-2xl"> 
+        <div class="icons">
+          <!-- First SVG Icon -->
+          <svg viewBox="0 0 1024 1024">
+            <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+          </svg>
+          <!-- Second SVG Icon -->
+          <svg
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          height="1em"
+          width="1em"
+          {...props}
+        >
+          <path fill="none" d="M0 0h24v24H0z" />
+          <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+        </svg>
+        </div>
+      </div>
+      <div class="box  image-container">
+        <button class="save-button">Save</button>
+        <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/download%20(10).jpeg" alt="img7" class="h-[275px] w-[225px] rounded-2xl"> 
+        <div class="icons">
+          <!-- First SVG Icon -->
+          <svg viewBox="0 0 1024 1024">
+            <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+          </svg>
+          <!-- Second SVG Icon -->
+          <svg
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          height="1em"
+          width="1em"
+          {...props}
+        >
+          <path fill="none" d="M0 0h24v24H0z" />
+          <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+        </svg>
+        </div>
+      </div>  
+      <div class="box image-container">
+        <button class="save-button">Save</button>
+        <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/_3.jpeg" alt="img7" class="h-[265px] w-[225px] rounded-2xl"> 
+        <div class="icons">
+          <!-- First SVG Icon -->
+          <svg viewBox="0 0 1024 1024">
+            <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+          </svg>
+          <!-- Second SVG Icon -->
+          <svg
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          height="1em"
+          width="1em"
+          {...props}
+        >
+          <path fill="none" d="M0 0h24v24H0z" />
+          <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+        </svg>
+        </div>
+      </div>    
+      
+      <div class="box  image-container">
+        <button class="save-button">Save</button>
+        <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/efc1aaa5-ff94-442e-ad35-46a1a4e168de.jpeg" alt="img7" class="h-[350px] w-[225px] rounded-2xl">
+        <div class="icons">
+          <!-- First SVG Icon -->
+          <svg viewBox="0 0 1024 1024">
+            <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+          </svg>
+          <!-- Second SVG Icon -->
+          <svg
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          height="1em"
+          width="1em"
+          {...props}
+        >
+          <path fill="none" d="M0 0h24v24H0z" />
+          <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+        </svg>
+        </div>
+      </div>
+      <div class="box  image-container">
+        <button class="save-button">Save</button>
+        <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/85a4f05a-35ca-45b8-ad29-91090890cf37.jpeg" alt="img4" class="h-[425px] w-[225px] rounded-2xl">
+        <div class="icons">
+          <!-- First SVG Icon -->
+          <svg viewBox="0 0 1024 1024">
+            <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+          </svg>
+          <!-- Second SVG Icon -->
+          <svg
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          height="1em"
+          width="1em"
+          {...props}
+        >
+          <path fill="none" d="M0 0h24v24H0z" />
+          <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+        </svg>
+        </div>
+      </div>
+      <div class="box  image-container">
+        <button class="save-button">Save</button>
+        <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/Cute%20hairstyle.jpeg" alt="img4" class="h-[250px] w-[225px] rounded-2xl"> 
+        <div class="icons">
+          <!-- First SVG Icon -->
+          <svg viewBox="0 0 1024 1024">
+            <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+          </svg>
+          <!-- Second SVG Icon -->
+          <svg
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          height="1em"
+          width="1em"
+          {...props}
+        >
+          <path fill="none" d="M0 0h24v24H0z" />
+          <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+        </svg>
+        </div>
+      </div>
+      <div class="box  image-container">
+        <button class="save-button">Save</button>
+        <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/6c3f3788-4e36-44a9-b827-06d2cb144e66.jpeg" alt="img4" class="h-[250px] w-[225px] rounded-2xl"> 
+        <div class="icons">
+          <!-- First SVG Icon -->
+          <svg viewBox="0 0 1024 1024">
+            <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+          </svg>
+          <!-- Second SVG Icon -->
+          <svg
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          height="1em"
+          width="1em"
+          {...props}
+        >
+          <path fill="none" d="M0 0h24v24H0z" />
+          <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+        </svg>
+        </div>
+      </div>
+      <div class="box  image-container">
+        <button class="save-button">Save</button>
+        <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/Chai%20illustration.jpeg" alt="img4" class="h-[225px] w-[225px] rounded-2xl"> 
+        <div class="icons">
+          <!-- First SVG Icon -->
+          <svg viewBox="0 0 1024 1024">
+            <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+          </svg>
+          <!-- Second SVG Icon -->
+          <svg
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          height="1em"
+          width="1em"
+          {...props}
+        >
+          <path fill="none" d="M0 0h24v24H0z" />
+          <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+        </svg>
+        </div>
+      </div>
+      <div class="box  image-container">
+        <button class="save-button">Save</button>
+        <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/a50cd2e5-cc19-4f04-8872-ec28deaf6f69.jpeg" alt="img5" class="h-[370px] w-[225px] rounded-2xl">
+        <div class="icons">
+          <!-- First SVG Icon -->
+          <svg viewBox="0 0 1024 1024">
+            <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+          </svg>
+          <!-- Second SVG Icon -->
+          <svg
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          height="1em"
+          width="1em"
+          {...props}
+        >
+          <path fill="none" d="M0 0h24v24H0z" />
+          <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+        </svg>
+        </div>
+      </div>
+      <div class="box  image-container">
+        <button class="save-button">Save</button>
+        <div class="relative inline-block group">
+          <video class="w-[225] h-[350] object-cover rounded-2xl" muted loop>
+            <source src="https://ik.imagekit.io/9muwkffn9/Pinterest/cfcab8d75bacbddc4b380d5fdce92660.mp4" type="video/mp4"> <!-- MP4 format -->
+            Your browser does not support the video tag.
+              </video>
+        </div>
+        
+          <div class="icons">
+            <!-- First SVG Icon -->
+            <svg viewBox="0 0 1024 1024">
+              <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+            </svg>
+            <!-- Second SVG Icon -->
+            <svg
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            height="1em"
+            width="1em"
+            {...props}
+          >
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+          </svg>
+          </div>
+        </div>
+      <div class="box  image-container">
+        <button class="save-button">Save</button>
+        <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/PUP.jpeg" alt="img6" class="h-[275px] w-[225px] rounded-2xl">
+        <div class="icons">
+          <!-- First SVG Icon -->
+          <svg viewBox="0 0 1024 1024">
+            <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+          </svg>
+          <!-- Second SVG Icon -->
+          <svg
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          height="1em"
+          width="1em"
+          {...props}
+        >
+          <path fill="none" d="M0 0h24v24H0z" />
+          <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+        </svg>
+        </div>
+      </div>
+      <div class="box  image-container">
+        <button class="save-button">Save</button>
+        <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/711177e5-5206-45f0-aa6d-ec3f245c0b77.jpeg" alt="img7" class="h-[200px] w-[225px] rounded-2xl">
+        <div class="icons">
+          <!-- First SVG Icon -->
+          <svg viewBox="0 0 1024 1024">
+            <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+          </svg>
+          <!-- Second SVG Icon -->
+          <svg
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          height="1em"
+          width="1em"
+          {...props}
+        >
+          <path fill="none" d="M0 0h24v24H0z" />
+          <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+        </svg>
+        </div>
+      </div>
+      <div class="box  image-container">
+        <button class="save-button">Save</button>
+        <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/Fun.jpeg" alt="img5" class="h-[320px] w-[225px] rounded-2xl">
+        <div class="icons">
+          <!-- First SVG Icon -->
+          <svg viewBox="0 0 1024 1024">
+            <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+          </svg>
+          <!-- Second SVG Icon -->
+          <svg
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          height="1em"
+          width="1em"
+          {...props}
+        >
+          <path fill="none" d="M0 0h24v24H0z" />
+          <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+        </svg>
+        </div>
+      </div>
+      <div class="box  image-container">
+        <button class="save-button">Save</button>
+        <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/Sneakers%20Are%20My%20Canvas,%20And%20Here%20Are%20Designs%20That%20I%20Made.jpeg" alt="img7" class="h-[375px] w-[225px] rounded-2xl"> 
+        <div class="icons">
+          <!-- First SVG Icon -->
+          <svg viewBox="0 0 1024 1024">
+            <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+          </svg>
+          <!-- Second SVG Icon -->
+          <svg
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          height="1em"
+          width="1em"
+          {...props}
+        >
+          <path fill="none" d="M0 0h24v24H0z" />
+          <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+        </svg>
+        </div>
+      </div>
+      <div class="box  image-container">
+        <button class="save-button">Save</button>
+        <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/Why%20I%20Write.jpeg" alt="img5" class="h-[400px] w-[225px] rounded-2xl"> 
+        <div class="icons">
+          <!-- First SVG Icon -->
+          <svg viewBox="0 0 1024 1024">
+            <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+          </svg>
+          <!-- Second SVG Icon -->
+          <svg
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          height="1em"
+          width="1em"
+          {...props}
+        >
+          <path fill="none" d="M0 0h24v24H0z" />
+          <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+        </svg>
+        </div>
+      </div>
+      <div class="box  image-container">
+        <button class="save-button">Save</button>
+        <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/_recipeideas%20_easyrecipes%20_cookingathome_.jpeg" alt="img7" class="h-[275px] w-[225px] rounded-2xl"> 
+        <div class="icons">
+          <!-- First SVG Icon -->
+          <svg viewBox="0 0 1024 1024">
+            <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+          </svg>
+          <!-- Second SVG Icon -->
+          <svg
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          height="1em"
+          width="1em"
+          {...props}
+        >
+          <path fill="none" d="M0 0h24v24H0z" />
+          <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+        </svg>
+        </div>
+      </div>
+      <div class="box image-container">
+        <button class="save-button">Save</button>
+        <div class="relative inline-block group">
+          <video class="w-[225] h-[370] object-cover rounded-2xl" muted loop>
+            <source src="https://ik.imagekit.io/9muwkffn9/Pinterest/3b7abbbf3c36006ea476e666fa8be821.mp4/ik-video.mp4" type="video/mp4"> <!-- MP4 format -->
+            Your browser does not support the video tag.
+              </video>
+        </div>
+        
+          <div class="icons">
+            <!-- First SVG Icon -->
+            <svg viewBox="0 0 1024 1024">
+              <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+            </svg>
+            <!-- Second SVG Icon -->
+            <svg
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            height="1em"
+            width="1em"
+            {...props}
+          >
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+          </svg>
+          </div>
+        </div>
+      <div class="box  image-container">
+        <button class="save-button">Save</button>
+        <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/d85f4ccd-08c1-4736-837b-54a39d26db5d.jpeg" alt="img7" class="h-[350px] w-[225px] rounded-2xl">
+        <div class="icons">
+          <!-- First SVG Icon -->
+          <svg viewBox="0 0 1024 1024">
+            <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+          </svg>
+          <!-- Second SVG Icon -->
+          <svg
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          height="1em"
+          width="1em"
+          {...props}
+        >
+          <path fill="none" d="M0 0h24v24H0z" />
+          <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+        </svg>
+        </div>
+      </div>
+      <div class="box  image-container">
+        <button class="save-button">Save</button>
+        <div class="relative inline-block group">
+          <video class="w-full h-auto object-cover rounded-2xl" muted loop>
+            <source src="https://ik.imagekit.io/9muwkffn9/Pinterest/1cf77cabe6fb762ca4b869f6d40faa9e.mp4" type="video/mp4"> <!-- MP4 format -->
+            Your browser does not support the video tag.
+        </video>
+        </div>
+        
+    <div class="icons">
+      <!-- First SVG Icon -->
+      <svg viewBox="0 0 1024 1024">
+        <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+      </svg>
+      <!-- Second SVG Icon -->
+      <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      height="1em"
+      width="1em"
+      {...props}
+    >
+      <path fill="none" d="M0 0h24v24H0z" />
+      <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+    </svg>
+    </div>
+      </div>
+      <div class="box  image-container">
+        <button class="save-button">Save</button>
+        <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/ceda1392-6f28-42be-a7e1-d6bccb78451d.jpeg" alt="img7" class="h-[375px] w-[225px] rounded-2xl"> 
+        <div class="icons">
+          <!-- First SVG Icon -->
+          <svg viewBox="0 0 1024 1024">
+            <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+          </svg>
+          <!-- Second SVG Icon -->
+          <svg
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          height="1em"
+          width="1em"
+          {...props}
+        >
+          <path fill="none" d="M0 0h24v24H0z" />
+          <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+        </svg>
+        </div>
+      </div>
+      
+      <div class="box  image-container">
+            <button class="save-button">Save</button>
+            <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/6ea026ca-15c3-4f3d-9421-f71ac1dbffa3.jpeg" alt="img7" class="h-[300px] w-[225px] rounded-2xl"> 
+            <div class="icons">
+              <!-- First SVG Icon -->
+              <svg viewBox="0 0 1024 1024">
+                <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+              </svg>
+              <!-- Second SVG Icon -->
+              <svg
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              height="1em"
+              width="1em"
+              {...props}
+            >
+              <path fill="none" d="M0 0h24v24H0z" />
+              <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+            </svg>
+            </div>
+      </div>
+      <div class="box  image-container">
+            <button class="save-button">Save</button>
+            <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/_.jpeg" alt="img7" class="h-[250px] w-[225px] rounded-2xl"> 
+            <div class="icons">
+              <!-- First SVG Icon -->
+              <svg viewBox="0 0 1024 1024">
+                <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+              </svg>
+              <!-- Second SVG Icon -->
+              <svg
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              height="1em"
+              width="1em"
+              {...props}
+            >
+              <path fill="none" d="M0 0h24v24H0z" />
+              <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+            </svg>
+            </div>
+      </div>
+      <div class="box  image-container">
+            <button class="save-button">Save</button>
+            <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/Pets_%20Furniture.%20Can%20We%20Live%20With%20Both_%20-%20The%20Sofa%20Bed%20Blog%20by%20Sleepers%20In%20Seattle" alt="img7" class="h-[250px] w-[225px] rounded-2xl">
+            <div class="icons">
+              <!-- First SVG Icon -->
+              <svg viewBox="0 0 1024 1024">
+                <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+              </svg>
+              <!-- Second SVG Icon -->
+              <svg
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              height="1em"
+              width="1em"
+              {...props}
+            >
+              <path fill="none" d="M0 0h24v24H0z" />
+              <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+            </svg>
+            </div>
+      </div>
+      <div class="box  image-container">
+            <button class="save-button">Save</button>
+            <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/Girlspich.jpeg" alt="img7" class="h-[275px] w-[225px] rounded-2xl"> 
+            <div class="icons">
+              <!-- First SVG Icon -->
+              <svg viewBox="0 0 1024 1024">
+                <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+              </svg>
+              <!-- Second SVG Icon -->
+              <svg
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              height="1em"
+              width="1em"
+              {...props}
+            >
+              <path fill="none" d="M0 0h24v24H0z" />
+              <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+            </svg>
+            </div>
+      </div>
+      <div class="box  image-container">
+            <button class="save-button">Save</button>
+            <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/Hey%20my%20Girl!!%20take%20a%20break%20before%20you%20get%20break,%20_.jpeg" alt="img7" class="h-[325px] w-[225px] rounded-2xl"> 
+            <div class="icons">
+              <!-- First SVG Icon -->
+              <svg viewBox="0 0 1024 1024">
+                <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+              </svg>
+              <!-- Second SVG Icon -->
+              <svg
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              height="1em"
+              width="1em"
+              {...props}
+            >
+              <path fill="none" d="M0 0h24v24H0z" />
+              <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+            </svg>
+            </div>
+      </div>
+      <div class="box  image-container">
+            <button class="save-button">Save</button>
+            <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/download%20(9).jpeg" alt="img7" class="h-[250px] w-[225px] rounded-2xl"> 
+            <div class="icons">
+              <!-- First SVG Icon -->
+              <svg viewBox="0 0 1024 1024">
+                <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+              </svg>
+              <!-- Second SVG Icon -->
+              <svg
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              height="1em"
+              width="1em"
+              {...props}
+            >
+              <path fill="none" d="M0 0h24v24H0z" />
+              <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+            </svg>
+            </div>
+      </div>
+      <div class="box image-container">
+            <button class="save-button">Save</button>
+            <div class="relative inline-block group">
+              <video class="w-[225] h-[250] object-cover rounded-2xl" muted loop>
+                <source src="https://ik.imagekit.io/9muwkffn9/Pinterest/8fe47215a029c23bb11d7efcb8c39816.mp4" type="video/mp4"> <!-- MP4 format -->
+                Your browser does not support the video tag.
+                  </video>
+            </div>
+            
+              <div class="icons">
+                <!-- First SVG Icon -->
+                <svg viewBox="0 0 1024 1024">
+                  <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+                </svg>
+                <!-- Second SVG Icon -->
+                <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                height="1em"
+                width="1em"
+                {...props}
+              >
+                <path fill="none" d="M0 0h24v24H0z" />
+                <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+              </svg>
+              </div>
+      </div>
+      <div class="box  image-container">
+            <button class="save-button">Save</button>
+            <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/lo-fi%20Japanese%20pop%20art%20wallpapers.jpeg" alt="img7" class="h-[300px] w-[225px] rounded-2xl"> 
+            <div class="icons">
+              <!-- First SVG Icon -->
+              <svg viewBox="0 0 1024 1024">
+                <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+              </svg>
+              <!-- Second SVG Icon -->
+              <svg
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              height="1em"
+              width="1em"
+              {...props}
+            >
+              <path fill="none" d="M0 0h24v24H0z" />
+              <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+            </svg>
+            </div>
+      </div>
+      <div class="box  image-container">
+            <button class="save-button">Save</button>
+            <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/f8ccca1b-347e-4395-9d4e-78a1e2b9cb8d.jpeg" alt="img7" class="h-[200px] w-[225px] rounded-2xl"> 
+            <div class="icons">
+              <!-- First SVG Icon -->
+              <svg viewBox="0 0 1024 1024">
+                <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+              </svg>
+              <!-- Second SVG Icon -->
+              <svg
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              height="1em"
+              width="1em"
+              {...props}
+            >
+              <path fill="none" d="M0 0h24v24H0z" />
+              <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+            </svg>
+            </div>
+      </div>
+      <div class="box  image-container">
+            <button class="save-button">Save</button>
+            <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/f0cfc3c6-c924-4b53-891c-99afbaa0a94d.jpeg" alt="img7" class="h-[250px] w-[225px] rounded-2xl"> 
+            <div class="icons">
+              <!-- First SVG Icon -->
+              <svg viewBox="0 0 1024 1024">
+                <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+              </svg>
+              <!-- Second SVG Icon -->
+              <svg
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              height="1em"
+              width="1em"
+              {...props}
+            >
+              <path fill="none" d="M0 0h24v24H0z" />
+              <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+            </svg>
+            </div>
+      </div>
+      
+          <div class="box  image-container">
+            <button class="save-button">Save</button>
+            <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/4ff0b706-c37b-44a0-bbce-106b21fcdb82.jpeg" alt="img7" class="h-[325px] w-[225px] rounded-2xl"> 
+            <div class="icons">
+              <!-- First SVG Icon -->
+              <svg viewBox="0 0 1024 1024">
+                <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+              </svg>
+              <!-- Second SVG Icon -->
+              <svg
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              height="1em"
+              width="1em"
+              {...props}
+            >
+              <path fill="none" d="M0 0h24v24H0z" />
+              <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+            </svg>
+            </div>
+          </div>
+          <div class="box  image-container">
+            <button class="save-button">Save</button>
+            <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/Flower%20Power.jpeg" alt="img7" class="h-[375px] w-[225px] rounded-2xl"> 
+            <div class="icons">
+              <!-- First SVG Icon -->
+              <svg viewBox="0 0 1024 1024">
+                <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+              </svg>
+              <!-- Second SVG Icon -->
+              <svg
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              height="1em"
+              width="1em"
+              {...props}
+            >
+              <path fill="none" d="M0 0h24v24H0z" />
+              <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+            </svg>
+            </div>
+          </div>
+          <div class="box  image-container">
+            <button class="save-button">Save</button>
+            <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/Manjummel%20Boys%20(2024).jpeg" alt="img7" class="h-[250px] w-[225px] rounded-2xl"> 
+            <div class="icons">
+              <!-- First SVG Icon -->
+              <svg viewBox="0 0 1024 1024">
+                <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+              </svg>
+              <!-- Second SVG Icon -->
+              <svg
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              height="1em"
+              width="1em"
+              {...props}
+            >
+              <path fill="none" d="M0 0h24v24H0z" />
+              <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+            </svg>
+            </div>
+          </div>
+          <div class="box  image-container">
+            <button class="save-button">Save</button>
+            <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/_Overthinker%20Club%20Membership%20Card_%20Sticker%20for%20Sale%20by%20DuanpryAS.jpeg" alt="img7" class="h-[225px] w-[225px] rounded-2xl"> 
+            <div class="icons">
+              <!-- First SVG Icon -->
+              <svg viewBox="0 0 1024 1024">
+                <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+              </svg>
+              <!-- Second SVG Icon -->
+              <svg
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              height="1em"
+              width="1em"
+              {...props}
+            >
+              <path fill="none" d="M0 0h24v24H0z" />
+              <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+            </svg>
+            </div>
+          </div>
+          
+          <div class="box  image-container">
+            <button class="save-button">Save</button>
+            <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/Learning%20drawing%20principles.jpeg" alt="img7" class="h-[225px] w-[225px] rounded-2xl"> 
+            <div class="icons">
+              <!-- First SVG Icon -->
+              <svg viewBox="0 0 1024 1024">
+                <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+              </svg>
+              <!-- Second SVG Icon -->
+              <svg
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              height="1em"
+              width="1em"
+              {...props}
+            >
+              <path fill="none" d="M0 0h24v24H0z" />
+              <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+            </svg>
+            </div>
+          </div>
+          <div class="box  image-container">
+            <button class="save-button">Save</button>
+            <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/Sabrina%20Carpenter%20Might%20Have%20Exposed%20A%20Celebrity%20Gen%20Z%20Love%20Triangle.jpeg" alt="img7" class="h-[350px] w-[225px] rounded-2xl"> 
+            <div class="icons">
+              <!-- First SVG Icon -->
+              <svg viewBox="0 0 1024 1024">
+                <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+              </svg>
+              <!-- Second SVG Icon -->
+              <svg
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              height="1em"
+              width="1em"
+              {...props}
+            >
+              <path fill="none" d="M0 0h24v24H0z" />
+              <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+            </svg>
+            </div>
+          </div>
+          <div class="box  image-container">
+            <button class="save-button">Save</button>
+            <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/6768ad24-19a5-4421-8e02-721b8ae736f7.jpeg" alt="img7" class="h-[250px] w-[225px] rounded-2xl">
+            <div class="icons">
+              <!-- First SVG Icon -->
+              <svg viewBox="0 0 1024 1024">
+                <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+              </svg>
+              <!-- Second SVG Icon -->
+              <svg
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              height="1em"
+              width="1em"
+              {...props}
+            >
+              <path fill="none" d="M0 0h24v24H0z" />
+              <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+            </svg>
+            </div>
+          </div>
+          <div class="box  image-container">
+            <button class="save-button">Save</button>
+            <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/41e1e233-4661-4e05-9858-f23735ee20f8.jpeg" alt="img7" class="h-[400px] w-[225px] rounded-2xl"> 
+            <div class="icons">
+              <!-- First SVG Icon -->
+              <svg viewBox="0 0 1024 1024">
+                <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+              </svg>
+              <!-- Second SVG Icon -->
+              <svg
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              height="1em"
+              width="1em"
+              {...props}
+            >
+              <path fill="none" d="M0 0h24v24H0z" />
+              <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+            </svg>
+            </div>
+          </div>
+          
+          <div class="box  image-container">
+            <button class="save-button">Save</button>
+            <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/Ghilli%20(2004).jpeg" alt="img7" class="h-[250px] w-[225px] rounded-2xl">
+            <div class="icons">
+              <!-- First SVG Icon -->
+              <svg viewBox="0 0 1024 1024">
+                <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+              </svg>
+              <!-- Second SVG Icon -->
+              <svg
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              height="1em"
+              width="1em"
+              {...props}
+            >
+              <path fill="none" d="M0 0h24v24H0z" />
+              <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+            </svg>
+            </div>
+          </div>
+          <div class="box  image-container">
+            <button class="save-button">Save</button>
+            <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/e6f88330-d7d8-475a-bfa6-b12d403b55e6.jpeg" alt="img7" class="h-[200px] w-[225px] rounded-2xl"> 
+            <div class="icons">
+              <!-- First SVG Icon -->
+              <svg viewBox="0 0 1024 1024">
+                <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+              </svg>
+              <!-- Second SVG Icon -->
+              <svg
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              height="1em"
+              width="1em"
+              {...props}
+            >
+              <path fill="none" d="M0 0h24v24H0z" />
+              <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+            </svg>
+            </div>
+          </div>
+          <div class="box  image-container">
+            <button class="save-button">Save</button>
+            <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/e3001152-72c3-4594-98aa-17e690998ed0.jpeg" alt="img7" class="h-[300px] w-[225px] rounded-2xl">
+            <div class="icons">
+              <!-- First SVG Icon -->
+              <svg viewBox="0 0 1024 1024">
+                <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+              </svg>
+              <!-- Second SVG Icon -->
+              <svg
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              height="1em"
+              width="1em"
+              {...props}
+            >
+              <path fill="none" d="M0 0h24v24H0z" />
+              <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+            </svg>
+            </div>
+          </div>
+          <div class="box  image-container">
+            <button class="save-button">Save</button>
+            <div class="relative inline-block group">
+              <video class="w-[225] h-[auto] object-cover rounded-2xl" muted loop>
+                <source src="https://ik.imagekit.io/9muwkffn9/Pinterest/70425b3e0e27b773e51727664354e9b7.mp4/ik-video.mp4" type="video/mp4"> <!-- MP4 format -->
+                Your browser does not support the video tag.
+                  </video>
+            </div>
+            
+              <div class="icons">
+                <!-- First SVG Icon -->
+                <svg viewBox="0 0 1024 1024">
+                  <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+                </svg>
+                <!-- Second SVG Icon -->
+                <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                height="1em"
+                width="1em"
+                {...props}
+              >
+                <path fill="none" d="M0 0h24v24H0z" />
+                <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+              </svg>
+              </div>
+            </div>
+          <div class="box  image-container">
+            <button class="save-button">Save</button>
+            <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/Nike%20Jordan%201.jpeg" alt="img7" class="h-[225px] w-[225px] rounded-2xl"> 
+            <div class="icons">
+              <!-- First SVG Icon -->
+              <svg viewBox="0 0 1024 1024">
+                <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+              </svg>
+              <!-- Second SVG Icon -->
+              <svg
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              height="1em"
+              width="1em"
+              {...props}
+            >
+              <path fill="none" d="M0 0h24v24H0z" />
+              <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+            </svg>
+            </div>
+          </div>
+          <div class="box  image-container">
+            <button class="save-button">Save</button>
+            <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/Curly%20haircuts%20for%20different%20face%20shapes.jpeg" alt="img7" class="h-[150px] w-[225px] rounded-2xl">
+            <div class="icons">
+              <!-- First SVG Icon -->
+              <svg viewBox="0 0 1024 1024">
+                <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+              </svg>
+              <!-- Second SVG Icon -->
+              <svg
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              height="1em"
+              width="1em"
+              {...props}
+            >
+              <path fill="none" d="M0 0h24v24H0z" />
+              <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+            </svg>
+            </div>
+          </div>
+          <div class="box  image-container">
+            <button class="save-button">Save</button>
+            <img src="https://ik.imagekit.io/9muwkffn9/Pinterest/448359ef-bde0-4e2d-9dd5-e29dd07aa5b9.jpeg" alt="img7" class="h-[300px] w-[225px] rounded-2xl">
+            <div class="icons">
+              <!-- First SVG Icon -->
+              <svg viewBox="0 0 1024 1024">
+                <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+              </svg>
+              <!-- Second SVG Icon -->
+              <svg
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              height="1em"
+              width="1em"
+              {...props}
+            >
+              <path fill="none" d="M0 0h24v24H0z" />
+              <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+            </svg>
+            </div>
+          </div>
+          <div class="box  image-container">
+            <button class="save-button">Save</button>
+            <div class="relative inline-block group">
+              <video class="w-[225] h-[300] object-cover rounded-2xl" id="my-video" muted loop>
+            <source src="https://ik.imagekit.io/9muwkffn9/Pinterest/140dac2a24e17f4dc24087daa55923f6.mp4/ik-video.mp4" type="video/mp4"> <!-- MP4 format -->
+            Your browser does not support the video tag.
+              </video>
+            </div>
+
+            
+              <div class="icons">
+                <!-- First SVG Icon -->
+                <svg viewBox="0 0 1024 1024">
+                  <path d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path>
+                </svg>
+                <!-- Second SVG Icon -->
+                <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                height="1em"
+                width="1em"
+                {...props}
+              >
+                <path fill="none" d="M0 0h24v24H0z" />
+                <path d="M5 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm14 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+              </svg>
+              </div>
+            </div>
+              
+       </div>  
+    </div>
+         
+
+     
+     
+     <script>
+      // Get all video elements
+      const videos = document.querySelectorAll('video');
+  
+      // Loop through all videos and add event listeners
+      videos.forEach(video => {
+        // Ensure video is ready to play
+        video.load(); // Preload the video
+  
+        // Play the video on hover
+        video.addEventListener('mouseenter', () => {
+          video.play();
+        });
+  
+        // Pause the video when the mouse leaves
+        video.addEventListener('mouseleave', () => {
+          video.pause();
+        });
+      });
+    </script>
+</body>
+</html>

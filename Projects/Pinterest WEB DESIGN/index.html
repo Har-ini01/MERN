@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pinterest Style Layout</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="firstpage.css">
+</head>
+<body class="bg-[#FFE2EB] h-screen flex flex-col">
+
+  <!-- Navbar -->
+  <nav class="bg-white w-full z-10 fixed">
+    <div class="w-full flex items-center justify-between h-20">
+      <!-- Left Section: Logo and Links (Align Left) -->
+      <div class="flex items-center space-x-7 ml-4">
+        <div class="flex items-center">
+          <a href="./index.html"><img
+            src="https://ik.imagekit.io/9muwkffn9/Pinterest/pinterest%20icon.jpeg"
+            alt="Pinterest Logo"
+            class="w-12 h-12"
+          /></a>
+        <a href="./index.html"><span class="pinterest-text">Pinterest</span></a>
+        </div>
+        
+        <a href="#" class="text-gray-700 hover:text-red-600 font-medium">Today</a>
+        <a href="#" class="text-gray-700 hover:text-red-600 font-medium">Watch</a>
+        <a href="#" class="text-gray-700 hover:text-red-600 font-medium">Explore</a>
+      </div>
+
+      <!-- Right Section: About, Business, Blog, Login, and Sign Up (Align Right) -->
+      <div class="flex items-center space-x-7 mr-4">
+        <a href="#" class="text-gray-700 hover:text-red-600 font-medium hidden sm:inline">About</a>
+        <a href="#" class="text-gray-700 hover:text-red-600 font-medium hidden sm:inline">Business</a>
+        <a href="#" class="text-gray-700 hover:text-red-600 font-medium hidden sm:inline">Blog</a>
+        <div>
+          <button class="bg-red-600 text-white px-4 py-2 rounded-full font-semibold hover:bg-red-700">
+            Log in
+          </button>
+          <button class="border border-red-600 text-red-600 px-4 py-2 rounded-full font-semibold hover:bg-red-100">
+            Sign up
+          </button>
+        </div>
+        
+      </div>
+    </div>
+  </nav>
+  <div class="bg-[#DAFFF6]">
+    <div style="display: flex; flex: 1; width: 100%;">
+      <!-- Left Section with Text -->
+      <div class="left-section flex flex-col items-center">
+        <h1 class="headline1">Save ideas you like</h1>
+        <p class="paragraph1 px-36 text-center">
+          Collect your favourites so you can get back to them later.
+        </p>
+        <button class="mt-6 bg-red-600 text-white px-4 py-3 rounded-full font-semibold hover:bg-red-700">
+          Explore
+        </button>
+      </div>
+  
+      <!-- Right Section with Images -->
+      <div class="right-section">
+        <!-- Image 1 -->
+         <div class="flex flex-col space-y-8">
+          <div class="image-container image-1">
+            <div class="absolute text-left p-5 font-sans font-[500] text-[56px] top-20 text-white">Fern Future Home Vibes</div>
+          </div>
+          <div class="image-container image-3">
+            <div class="absolute text-left p-5 font-sans font-[500] text-[28px] top-10 text-white">Serve My Drinks in Style</div>
+          </div>
+         </div>
+       
+        <div class="flex flex-col space-y-5">
+          <div class="image-container image-2">
+            <div class="absolute text-left p-5 font-sans font-[500] text-[28px] top-10 text-[#fff]">My Scandinavian Bedroom</div>
+          </div>
+          <!-- Image 4 -->
+          <div class="image-container image-4">
+            <div class="absolute text-left p-5 font-sans font-[500] text-[20px] top-10 text-white">The Deck of My Dreams</div>
+          </div>
+          <div class="image-container image-5">
+          <div class="absolute text-left p-5 font-sans font-[500] text-[28px] top-10 text-white">Our Bathroom Upgrade</div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content Section -->
+  <div class="flex flex-1">
+    <!-- Left Image Section -->
+    <div class="w-1/2 h-full">
+      <img
+        src="https://ik.imagekit.io/9muwkffn9/Pinterest/shop-de8ddf10.png"
+        alt="Makeup Inspiration"
+        class="w-full h-full object-cover"
+      />
+    </div>
+
+    <!-- Right Content Section -->
+    <div class="w-1/2 h-full flex flex-col justify-center items-center text-center px-24">
+      <h1 class="headline leading-tight">
+        See it, make it, try it, do it
+      </h1>
+      <p class="mt-4 paragraph text-center px-10">
+        The best part of Pinterest is discovering new things and ideas from people around the world.
+      </p>
+      <button class="mt-6 bg-red-600 text-white px-4 py-3 rounded-full font-semibold hover:bg-red-700">
+        Explore
+      </button>
+    </div>
+  </div>
+
+</body>
+</html>
+

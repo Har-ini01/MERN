@@ -11,6 +11,7 @@ const Counter = () => {
   const [bool , setBool] = useState(true)
   return (
     <>
+      
       <div className="border border-red-500 p-5">
       <div className="space-y-3">
           <p>Number Value</p>

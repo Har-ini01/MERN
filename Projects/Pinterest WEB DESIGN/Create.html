@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pinterest</title>
+ <link rel="stylesheet" href="styles.css">
+ <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <div class="2xl:container">
+      <div class="w-[100%] flex flex-row justify-evenly items-center gap-2 px-5 py-4 fixed top-0 left-0 z-10 bg-white shadow-md">
+             <!-- Buttons -->
+            <a href="./Home.html""><img src="https://ik.imagekit.io/9muwkffn9/Pinterest/pinterest%20icon.jpeg" alt="icon" class="h-[40px] w-[70px] hover:bg-[#f4f3f3] rounded-full"></a>
+            <button class="click-button"><a href="./Home.html">Home</a></button>
+            <button class="click-button"><a href="./Explore.html">Explore</a></button>
+            <button class="click-button"><a href="./Create.html">Create</a></button>
+
+            <script>
+                // Select all buttons
+                const buttons = document.querySelectorAll('.click-button');
+
+                // Add click event listeners
+                buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove 'active' class from all buttons
+                    buttons.forEach(btn => btn.classList.remove('active'));
+
+                    // Add 'active' class to the clicked button
+                    button.classList.add('active');
+                });
+                });
+            </script>
+            <div class="search-bar-container">
+                <!-- Search Icon -->
+                <svg
+                  viewBox="0 0 788.5 1000"
+                  fill="currentColor"
+                  class="search-icon"
+                >
+                  <path d="M772 772c20 22.667 22 43.333 6 62l-46 46c-24 21.333-46.667 21.333-68 0L474 690c-49.333 28-101.333 42-156 42-85.333 0-159.667-31.667-223-95S0 499.333 0 414s30-158.333 90-219 132.667-91 218-91 160 31.667 224 95 96 137.667 96 223c0 58.667-15.333 112.667-46 162l190 188M94 414c0 58.667 22.667 110.667 68 156s97.333 68 156 68 109-21 151-63 63-93 63-153c0-58.667-22.667-110.333-68-155s-97.333-67-156-67-109 21-151 63-63 92.333-63 151" />
+                </svg>
+            
+                <!-- Search Input -->
+                <input type="text" class="search-bar" placeholder="Search">
+            </div>
+            <div class="icon-container">
+                <div class="icon" data-name="Notifications">
+                  <svg viewBox="0 0 512 512" fill="#767676" height="30" width="30">
+                    <path d="M440.08 341.31c-1.66-2-3.29-4-4.89-5.93-22-26.61-35.31-42.67-35.31-118 0-39-9.33-71-27.72-95-13.56-17.73-31.89-31.18-56.05-41.12a3 3 0 01-.82-.67C306.6 51.49 282.82 32 256 32s-50.59 19.49-59.28 48.56a3.13 3.13 0 01-.81.65c-56.38 23.21-83.78 67.74-83.78 136.14 0 75.36-13.29 91.42-35.31 118-1.6 1.93-3.23 3.89-4.89 5.93a35.16 35.16 0 00-4.65 37.62c6.17 13 19.32 21.07 34.33 21.07H410.5c14.94 0 28-8.06 34.19-21a35.17 35.17 0 00-4.61-37.66zM256 480a80.06 80.06 0 0070.44-42.13 4 4 0 00-3.54-5.87H189.12a4 4 0 00-3.55 5.87A80.06 80.06 0 00256 480z" />
+                  </svg>
+                </div>
+                
+                <div class="icon" data-name="Messages">
+                  <svg viewBox="0 0 512 512" fill="#767676" height="30" width="30">
+                    <path d="M475.22 206.52c-10.34-48.65-37.76-92.93-77.22-124.68A227.4 227.4 0 00255.82 32C194.9 32 138 55.47 95.46 98.09 54.35 139.33 31.82 193.78 32 251.37a215.66 215.66 0 0035.65 118.76l4.35 6.05L48 480l114.8-28.56s2.3.77 4 1.42 16.33 6.26 31.85 10.6c12.9 3.6 39.74 9 60.77 9 59.65 0 115.35-23.1 156.83-65.06C457.36 365.77 480 310.42 480 251.49a213.5 213.5 0 00-4.78-44.97zM160 288a32 32 0 1132-32 32 32 0 01-32 32zm96 0a32 32 0 1132-32 32 32 0 01-32 32zm96 0a32 32 0 1132-32 32 32 0 01-32 32z" />
+                  </svg>
+                </div>
+                
+                <div class="icon" data-name="Your profile">
+                    <svg
+                    viewBox="0 0 24 24"
+                    fill="#767676"
+                    height="30"
+                    width="30"
+                    {...props}
+                  >
+                    <path d="M12 19.2c-2.5 0-4.71-1.28-6-3.2.03-2 4-3.1 6-3.1s5.97 1.1 6 3.1a7.232 7.232 0 01-6 3.2M12 5a3 3 0 013 3 3 3 0 01-3 3 3 3 0 01-3-3 3 3 0 013-3m0-3A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10c0-5.53-4.5-10-10-10z" />
+                  </svg>
+                </div>
+                <div class="icon" data-name="Accounts and more options">
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="#767676"
+                        height="30"
+                        width="30"
+                        {...props}
+                        >
+                        <path d="M16.293 9.293L12 13.586 7.707 9.293l-1.414 1.414L12 16.414l5.707-5.707z" />
+                    </svg>
+                </div>
+              </div>
+              
+        </div>
+    </div>
+    <!-- CREATE PIN -->
+     
+    <div class="2xl:container">
+      <div class="border-styles">
+      </div>    
+    </div>
+    <div class="2xl:container">
+      <div class="w-[100%] mx-auto grid grid-cols-2">
+        <div class="pt-16">
+          <div class="flex flex-col items-start justify-center gap-10 top-30 fixed hover:cursor-pointer">
+            <div class="hover:bg-[#f4f3f3] rounded-full p-2">
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                height="2em"
+                width="2em"
+                {...props}
+              >
+                <path d="M13.061 4.939l-2.122 2.122L15.879 12l-4.94 4.939 2.122 2.122L20.121 12z" />
+                <path d="M6.061 19.061L13.121 12l-7.06-7.061-2.122 2.122L8.879 12l-4.94 4.939z" />
+            </svg>
+            </div>
+            <div class="hover:bg-[#f4f3f3] rounded-full p-2">
+              <svg
+                  viewBox="0 0 448 512"
+                  fill="currentColor"
+                  height="2em"
+                  width="2em"
+                  {...props}
+                >
+                  <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32v144H48c-17.7 0-32 14.3-32 32s14.3 32 32 32h144v144c0 17.7 14.3 32 32 32s32-14.3 32-32V288h144c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
+                </svg>
+            </div>
+            
+          </div>
+          <div class="w-[100%] flex flex-row justify-start items-center px-5 py-4 z-10 border-styles1">
+            <p class="txt2">Create Pin</p>
+      </div>
+      <div class="dottedbox flex flex-col items-center pt-48">
+        <svg
+          fill="currentColor"
+          viewBox="0 0 16 16"
+          height="2.5em"
+          width="2.5em"
+          {...props}
+        >
+          <path d="M16 8A8 8 0 100 8a8 8 0 0016 0zm-7.5 3.5a.5.5 0 01-1 0V5.707L5.354 7.854a.5.5 0 11-.708-.708l3-3a.5.5 0 01.708 0l3 3a.5.5 0 01-.708.708L8.5 5.707V11.5z" />
+    </svg>
+    <p class="text-center pt-5 px-20 pb-28 font-normal font-sans text-[#211922]">Choose a file or drag and drop it here</p>
+    <p class="text-center px-5   font-normal text-[14px] font-sans">We recommend using high quality .jpg files less than 20MB or .mp4 files less than 200MB</p>
+    
+      </div>
+      <div class="line">
+        <p></p>
+      </div>
+      <button class="button-styles mb-20">Save from URL</button>
+        </div>
+        
+        <div class="box2">
+          <p class="text-[12px]">Title</p>
+          <p class="border rounded-xl mt-1 ml-1 p-3 mb-5">Add a title</p>
+          <p class="text-[12px]">Description</p>
+          <p class="border rounded-xl px-3 pt-3 pb-16 ml-1 mb-6">Add a detailed description</p>
+          <p class="text-[12px]">Link</p>
+          <p class="border rounded-xl mt-1 p-3 ml-1 mb-2">Add a link</p>
+          <p class="text-[12px]">Board</p>
+          <div class="flex flex-row justify-between items-end border rounded-xl mt-1 p-3 mb-4 ml-1">
+            <p>Choose a Board</p>
+            <svg
+            viewBox="0 0 24 24"
+            fill="#E4E4E4"
+            height="2em"
+            width="2em"
+            {...props}
+          >
+            <path d="M16.293 9.293L12 13.586 7.707 9.293l-1.414 1.414L12 16.414l5.707-5.707z" />
+          </svg>
+          </div>
+          
+          <p class="text-[12px]">Tagged topics (0)</p>
+          <p class="border rounded-xl my-1 p-3 ml-1">Search for a tag</p>
+          <p class="text-[12px]">Don't worry, people won't see your tags</p>
+          <div class="flex flex-row justify-start items-end">
+            <p class="pt-5 font-semibold text-[18px]">More options</p>
+            <svg
+            viewBox="0 0 24 24"
+            fill="#E4E4E4"
+            height="2em"
+            width="2em"
+            {...props}
+          >
+            <path d="M16.293 9.293L12 13.586 7.707 9.293l-1.414 1.414L12 16.414l5.707-5.707z" />
+          </svg>
+        </div>
+          
+        </div>
+      </div>
+      
+    </div>
+    
+     
+</body>
+</html>

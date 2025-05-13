@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us | Tech Store</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #0a1020;
+      --bg-gradient: radial-gradient(ellipse at 60% 0%, #1a2340 0%, #0a1020 100%);
+      --card-bg: rgba(16, 24, 42, 0.85);
+      --primary: #3b82f6;
+      --primary-glow: #2563eb;
+      --text-main: #fff;
+      --text-muted: #b0b8d1;
+      --shadow: 0 4px 32px 0 #2563eb22;
+      --radius: 22px;
+    }
+    body {
+      min-height: 100vh;
+      background: var(--bg-gradient), var(--bg-main);
+      color: var(--text-main);
+      font-family: 'Inter', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .nav {
+      width: 100vw;
+      background: rgba(18, 24, 40, 0.7);
+      border-radius: 0 0 var(--radius) var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 44px;
+      box-shadow: 0 2px 24px 0 #0004;
+      border-bottom: 1.5px solid #1a2340;
+      height: 72px;
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      left: 0;
+      z-index: 1001;
+    }
+    .logo {
+      font-size: 2.1rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--text-main);
+      opacity: 0.97;
+    }
+    .nav a {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 1.13rem;
+      font-weight: 500;
+      padding: 10px 22px;
+      border-radius: 12px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav a:hover, .nav a:focus {
+      background: #1a2340;
+      color: #fff;
+    }
+    .about-hero {
+      max-width: 900px;
+      margin: 80px auto 40px auto;
+      text-align: center;
+      padding: 48px 24px 32px 24px;
+    }
+    .about-hero h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      margin-bottom: 18px;
+      color: #fff;
+      letter-spacing: -1px;
+    }
+    .about-hero p {
+      color: var(--text-muted);
+      font-size: 1.25rem;
+      margin-bottom: 0;
+      font-weight: 500;
+    }
+    .about-section, .team-section, .contact-section {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 40px 32px;
+      color: var(--text-main);
+      backdrop-filter: blur(6px);
+    }
+    .about-section h2, .team-section h2, .contact-section h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+      color: #3b82f6;
+    }
+    .about-section p {
+      font-size: 1.13rem;
+      color: var(--text-muted);
+      margin-bottom: 0;
+    }
+    .team-list {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 24px;
+    }
+    .team-member {
+      background: #1a2340;
+      border-radius: 16px;
+      padding: 24px 18px;
+      text-align: center;
+      width: 200px;
+      box-shadow: 0 2px 16px #2563eb22;
+    }
+    .team-member img {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      margin-bottom: 12px;
+      object-fit: cover;
+      border: 2px solid #3b82f6;
+    }
+    .team-member h3 {
+      font-size: 1.13rem;
+      color: #fff;
+      margin: 0 0 6px 0;
+      font-weight: 700;
+    }
+    .team-member p {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      margin: 0;
+    }
+    .contact-section a {
+      color: #3b82f6;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .contact-section a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+    @media (max-width: 700px) {
+      .about-hero { padding: 32px 8px 18px 8px; }
+      .about-section, .team-section, .contact-section { padding: 24px 8px; }
+      .team-list { gap: 16px; }
+      .team-member { width: 100%; max-width: 320px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="logo">TECH</div>
+    <a href="index.html">Home</a>
+  </nav>
+  <section class="about-hero">
+    <h1>About Tech Store</h1>
+    <p>Empowering your digital lifestyle with the latest technology, expert advice, and exceptional service.</p>
+  </section>
+  <section class="about-section">
+    <h2>Our Mission</h2>
+    <p>At Tech Store, our mission is to make cutting-edge technology accessible to everyone. We believe in providing not just the best products, but also the best experience—through expert guidance, honest reviews, and outstanding customer support. Whether you're a tech enthusiast or a casual shopper, we're here to help you find the perfect gadget for your needs.</p>
+  </section>
+  <section class="team-section">
+    <h2>Meet Our Team</h2>
+    <div class="team-list">
+      <div class="team-member">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Alex Thompson" />
+        <h3>Alex Thompson</h3>
+        <p>Founder & CEO</p>
+      </div>
+      <div class="team-member">
+        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Jamie Chen" />
+        <h3>Jamie Chen</h3>
+        <p>Lead Developer</p>
+      </div>
+      <div class="team-member">
+        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Sarah Martinez" />
+        <h3>Sarah Martinez</h3>
+        <p>Product Specialist</p>
+      </div>
+      <div class="team-member">
+        <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="Ryan Park" />
+        <h3>Ryan Park</h3>
+        <p>Customer Success</p>
+      </div>
+    </div>
+  </section>
+  <section class="contact-section">
+    <h2>Contact Us</h2>
+    <p>Have questions or need support? Reach out to us at <a href="mailto:support@techstore.com">support@techstore.com</a> or call <a href="tel:+1234567890">+1 234 567 890</a>.</p>
+  </section>
+</body>
+</html> 

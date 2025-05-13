@@ -1,7 +1,18 @@
-import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { Link } from "react-router-dom";
+import useFetchProducts from "../Hooks/useFetchProducts";
 
+const productWithCategory = (Component) =>{
+  const WithCategory = (props) => {
+    return(
+      <div className="relative">
+      <p className="absolute top-0 left-0 mt-4 ml-4 uppercase inline-flex items-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4  focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">{props.category}</p>
+      <Component {...props} />
+    </div>
+    )
+  }
+  return WithCategory;
+}
 const ProductCard = (props) => {
   return (
     <>
@@ -163,42 +174,18 @@ const ProductCard = (props) => {
 };
 
 const ProductLayout = () => {
-  const [productDatas, setProductDatas] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  const [count, setCounter] = useState(10)
-  useEffect(()=>{
-    console.log(count)
-    setCounter(count+1)
-  },[])
-  useEffect(() => {
-    console.log("useEffect Executed");
-    fetchData();
-  },[]);
-
-  const fetchData = async () => {
-    try {
-      setIsLoading(true)
-      const res = await fetch("https://dummyjson.com/products");
-      const data = await res.json();
-      console.log("Data:", data.products);
-      setProductDatas(data.products);
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  const { productData, isLoading } = useFetchProducts();
+  const ProductWithCategory = productWithCategory(ProductCard)
   if (isLoading) {
-    return <p>Loading...</p>
+    return <p>Loading...</p>;
   } else {
     return (
       <>
         <div className="2xl:container mx-auto">
           <div className="w-[90%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 py-5 px-5">
-            {productDatas.map((items) => {
+            {productData.map((items) => {
               return (
-                <ProductCard
+                <ProductWithCategory
                   key={uuidv4()}
                   id={items.id}
                   image={items.thumbnail}
@@ -207,6 +194,7 @@ const ProductLayout = () => {
                   offer={items.discountPercentage}
                   rating={items.rating}
                   total_no_users={items.stock}
+                  category = {items.category}
                 />
               );
             })}

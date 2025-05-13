@@ -1,31 +1,16 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import useFetchProductsDetails from "../Hooks/useFetchProductsDetails";
 
 
 const ProductDetails = () => {
   const { id } = useParams();
-  const [product, setProduct] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState("description");
+  const [activeTab, setActiveTab] = useState(0);
+  const {product, loading} = useFetchProductsDetails(id)
 
-  useEffect(() => {
-    const fetchProduct = async () => {
-      try {
-        const response = await fetch(`https://dummyjson.com/products/${id}`);
-        const data = await response.json();
-        setProduct(data);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching product:", error);
-        setLoading(false);
-      }
-    };
-
-    fetchProduct();
-  }, [id]);
 
   if (loading) {
     return <div className="text-center py-8">Loading...</div>;
@@ -34,6 +19,7 @@ const ProductDetails = () => {
   if (!product) {
     return <div className="text-center py-8">Product not found</div>;
   }
+
 
   return (
     <div className="bg-white dark:bg-gray-900">

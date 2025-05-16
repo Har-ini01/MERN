@@ -1,287 +1,303 @@
-import React from "react";
 import { useParams } from "react-router-dom";
-import { useState} from "react";
+import { useState, useEffect } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
-import useFetchProductsDetails from "../../Hooks/useFetchProductsDetails";
+import useFetchProductsDetails from "../../hooks/useFetchProductsDetails";
+import useCart from "../../hooks/useCart";
 
+// onClick={()=>setData("dvds")} - 1
+// onClick={functionName} - 2
 
-const ProductDetails = () => {
+const ProductsDetails = () => {
   const { id } = useParams();
-  const [activeTab, setActiveTab] = useState(0);
-  const {product, loading} = useFetchProductsDetails(id)
+  const { product, loading } = useFetchProductsDetails(id);
+  const [activeImage, setActiveImage] = useState(0);
+  const [quantity, setQuantity] = useState(1);
+  const [isInCart, setIsInCart] = useState(false);
+  const [cartItemId, setCartItemId] = useState(null);
 
+  const { cart, addItemsCart, clearCartItem, updateQuantity } = useCart();
+
+  // Check if product is in cart
+  useEffect(() => {
+    const cartItem = cart.find(item => item.id === Number(id));
+    if (cartItem) {
+      setIsInCart(true);
+      setCartItemId(cartItem.id);
+      setQuantity(cartItem.quantity || 1);
+    } else {
+      setIsInCart(false);
+      setCartItemId(null);
+      setQuantity(1);
+    }
+  }, [cart, id]);
+
+  const formatDate = (dateString) => {
+    return new Date(dateString).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  };
 
   if (loading) {
-    return <div className="text-center py-8">Loading...</div>;
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="w-12 h-12 border-t-2 border-b-2 rounded-full animate-spin border-primary-600"></div>
+      </div>
+    );
   }
 
   if (!product) {
-    return <div className="text-center py-8">Product not found</div>;
+    return <div className="py-8 text-center">Product not found</div>;
   }
 
+  const handleQuantityChange = (newQuantity) => {
+    if (newQuantity < 1) return;
+    setQuantity(newQuantity);
+    if (isInCart) {
+      updateQuantity(cartItemId, newQuantity);
+    }
+  };
+
+  const handleAddToCart = () => {
+    addItemsCart({ ...product, quantity });
+  };
+
+  const handleRemoveFromCart = () => {
+    clearCartItem(cartItemId);
+  };
 
   return (
     <div className="bg-white dark:bg-gray-900">
-      <div className="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
-        {/* Product Header */}
-        <div className="lg:grid lg:grid-cols-2 lg:gap-8">
-          {/* Product Images */}
-          <div className="mb-8 lg:mb-0">
-            <div className="aspect-w-1 aspect-h-1 rounded-lg overflow-hidden">
+      <div className="px-4 py-8 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        {/* Product Overview */}
+        <div className="lg:grid lg:grid-cols-2 lg:gap-x-8 lg:items-start">
+          {/* Image gallery */}
+          <div className="flex flex-col">
+            <div className="overflow-hidden rounded-lg aspect-w-1 aspect-h-1">
               {/* <img
-                src={product.thumbnail}
+                src={product.images[activeImage] || product.thumbnail}
                 alt={product.title}
-                className="w-full h-96 object-cover rounded-lg"
+                className="object-cover object-center w-full h-96"
               /> */}
+
+              <LazyLoadImage
+                className="object-cover object-center w-full h-96"
+                alt={product.title}
+                effect="blur"
+                wrapperProps={{
+                  // If you need to, you can tweak the effect transition using the wrapper style.
+                  style: { transitionDelay: "1s" },
+                }}
+                src={product.images[activeImage] || product.thumbnail}
+              />
             </div>
-            <LazyLoadImage
-              className="w-full h-96 object-cover rounded-lg"
-              alt={product.title}
-              effect="blur"
-              wrapperProps={{
-                // If you need to, you can tweak the effect transition using the wrapper style.
-                style: { transitionDelay: "0.2s" },
-              }}
-              src={product.thumbnail}
-            />
-            <div className="mt-4 grid grid-cols-4 gap-2">
-              {product.images &&
-                product.images.map((image, index) => (
-                  <img
+            {/* Thumbnail Images */}
+            {product.images && product.images.length > 1 && (
+              <div className="grid grid-cols-4 gap-2 mt-4">
+                {product.images.map((image, index) => (
+                  <button
                     key={index}
-                    src={image}
-                    alt={`${product.title} ${index + 1}`}
-                    className="h-24 w-full object-cover rounded cursor-pointer"
-                  />
+                    onClick={() => setActiveImage(index)}
+                    className={`relative rounded-md overflow-hidden h-24 ${
+                      activeImage === index ? "ring-2 ring-primary-500" : ""
+                    }`}>
+                    <img
+                      src={image}
+                      alt={`Product ${index + 1}`}
+                      className="object-cover w-full h-full"
+                    />
+                  </button>
                 ))}
-            </div>
+              </div>
+            )}
           </div>
 
-          {/* Product Info */}
-          <div className="lg:pl-8">
-            <div className="mb-6">
-              <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
-                {product.title}
-              </h1>
-              <p className="text-sm text-gray-500 dark:text-gray-400">
-                Brand: <span className="font-semibold">{product.brand}</span> |
-                Category:{" "}
-                <span className="font-semibold">{product.category}</span>
-              </p>
-            </div>
+          {/* Product info */}
+          <div className="px-4 mt-10 sm:px-0 sm:mt-16 lg:mt-0">
+            <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
+              {product.title}
+            </h1>
 
-            <div className="mb-6">
-              <div className="flex items-center gap-4">
-                <span className="text-3xl font-bold text-gray-900 dark:text-white">
+            <div className="mt-3">
+              <h2 className="sr-only">Product information</h2>
+              <div className="flex items-center">
+                <p className="text-3xl tracking-tight text-gray-900 dark:text-white">
                   ${product.price}
-                </span>
+                </p>
                 {product.discountPercentage > 0 && (
-                  <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800">
-                    {product.discountPercentage}% OFF
+                  <span className="ml-4 px-2.5 py-0.5 text-sm font-medium text-green-600 bg-green-100 rounded-md">
+                    Save {product.discountPercentage}%
                   </span>
                 )}
               </div>
             </div>
 
-            <div className="mb-6">
-              <div className="flex items-center gap-2">
-                <div className="flex">
+            {/* Rating */}
+            <div className="mt-4">
+              <div className="flex items-center">
+                <div className="flex items-center">
                   {[...Array(5)].map((_, index) => (
                     <svg
                       key={index}
                       className={`w-5 h-5 ${
-                        index < Math.floor(product.rating)
+                        index < Math.round(product.rating)
                           ? "text-yellow-400"
                           : "text-gray-300"
                       }`}
                       fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
+                      viewBox="0 0 20 20">
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                     </svg>
                   ))}
                 </div>
-                <span className="text-sm font-medium text-gray-900 dark:text-white">
-                  {product.rating} rating
-                </span>
+                <p className="ml-2 text-sm text-gray-500 dark:text-gray-400">
+                  {product.rating} out of 5 stars
+                </p>
               </div>
             </div>
 
-            <div className="mb-6">
-              <div className="flex items-center gap-4">
-                <div
-                  className={`px-4 py-2 rounded-lg ${
-                    product.stock > 10
-                      ? "bg-green-100 text-green-800"
-                      : product.stock > 0
-                      ? "bg-yellow-100 text-yellow-800"
-                      : "bg-red-100 text-red-800"
-                  }`}
-                >
-                  {product.stock > 10
-                    ? "In Stock"
-                    : product.stock > 0
-                    ? "Low Stock"
-                    : "Out of Stock"}
-                </div>
-                <span className="text-sm text-gray-500">
-                  {product.stock} units left
-                </span>
+            {/* Description */}
+            <div className="mt-6">
+              <h3 className="sr-only">Description</h3>
+              <p className="text-base text-gray-700 dark:text-gray-300">
+                {product.description}
+              </p>
+            </div>
+
+            {/* Product Details */}
+            <div className="pt-8 mt-8 border-t border-gray-200">
+              <h3 className="text-lg font-medium text-gray-900 dark:text-white">
+                Product Details
+              </h3>
+              <div className="mt-4 space-y-3">
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  <span className="font-medium">Brand:</span> {product.brand}
+                </p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  <span className="font-medium">Category:</span>{" "}
+                  {product.category}
+                </p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  <span className="font-medium">SKU:</span> {product.sku}
+                </p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  <span className="font-medium">Weight:</span> {product.weight}{" "}
+                  kg
+                </p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  <span className="font-medium">Stock:</span> {product.stock}{" "}
+                  units
+                </p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  <span className="font-medium">Status:</span>{" "}
+                  <span
+                    className={
+                      product.stock > 10 ? "text-green-600" : "text-red-600"
+                    }>
+                    {product.availabilityStatus}
+                  </span>
+                </p>
               </div>
             </div>
 
-            {/* Tabs */}
-            <div className="border-b border-gray-200 mb-6">
-              <nav className="flex gap-4">
-                <button
-                  onClick={() => setActiveTab("description")}
-                  className={`py-2 px-1 ${
-                    activeTab === "description"
-                      ? "border-b-2 border-primary-600 text-primary-600"
-                      : "text-gray-500"
-                  }`}
-                >
-                  Description
-                </button>
-                <button
-                  onClick={() => setActiveTab("specifications")}
-                  className={`py-2 px-1 ${
-                    activeTab === "specifications"
-                      ? "border-b-2 border-primary-600 text-primary-600"
-                      : "text-gray-500"
-                  }`}
-                >
-                  Specifications
-                </button>
-                <button
-                  onClick={() => setActiveTab("reviews")}
-                  className={`py-2 px-1 ${
-                    activeTab === "reviews"
-                      ? "border-b-2 border-primary-600 text-primary-600"
-                      : "text-gray-500"
-                  }`}
-                >
-                  Reviews
-                </button>
-              </nav>
+            {/* Shipping & Warranty */}
+            <div className="pt-8 mt-8 border-t border-gray-200">
+              <h3 className="text-lg font-medium text-gray-900 dark:text-white">
+                Shipping & Returns
+              </h3>
+              <div className="mt-4 space-y-3">
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  <span className="font-medium">Shipping:</span>{" "}
+                  {product.shippingInformation}
+                </p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  <span className="font-medium">Warranty:</span>{" "}
+                  {product.warrantyInformation}
+                </p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  <span className="font-medium">Return Policy:</span>{" "}
+                  {product.returnPolicy}
+                </p>
+              </div>
             </div>
 
-            {/* Tab Content */}
-            <div className="mb-8">
-              {activeTab === "description" && (
-                <div className="prose dark:prose-invert">
-                  <p className="text-gray-600 dark:text-gray-300">
-                    {product.description}
-                  </p>
+            {/* Add to Cart Section */}
+            <div className="mt-8">
+              <div className="flex items-center mb-4 space-x-4">
+                <div className="flex items-center space-x-2">
+                  <button 
+                    onClick={() => handleQuantityChange(quantity - 1)}
+                    className="px-3 py-1 text-gray-600 border rounded-md hover:bg-gray-100 dark:text-white dark:hover:bg-gray-800"
+                  >
+                    -
+                  </button>
+                  <span className="w-12 text-center">{quantity}</span>
+                  <button 
+                    onClick={() => handleQuantityChange(quantity + 1)}
+                    className="px-3 py-1 text-gray-600 border rounded-md hover:bg-gray-100 dark:text-white dark:hover:bg-gray-800"
+                  >
+                    +
+                  </button>
                 </div>
-              )}
+              </div>
+              <div className="flex space-x-4">
+                {!isInCart ? (
+                  <button
+                    className="flex-1 px-6 py-3 text-white rounded-md bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+                    onClick={handleAddToCart}>
+                    Add to Cart
+                  </button>
+                ) : (
+                  <button
+                    className="flex-1 px-6 py-3 text-white bg-red-600 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+                    onClick={handleRemoveFromCart}>
+                    Remove from Cart
+                  </button>
+                )}
+              </div>
+            </div>
 
-              {activeTab === "specifications" && (
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-3">
-                    <p className="text-sm">
-                      <span className="font-medium text-gray-900 dark:text-white">
-                        SKU:
-                      </span>{" "}
-                      <span className="text-gray-500 dark:text-gray-400">
-                        {product.sku}
+            {/* Reviews Section */}
+            <div className="pt-8 mt-8 border-t border-gray-200">
+              <h3 className="mb-6 text-lg font-medium text-gray-900 dark:text-white">
+                Customer Reviews
+              </h3>
+              <div className="space-y-6">
+                {product.reviews.map((review, index) => (
+                  <div
+                    key={index}
+                    className="pb-6 border-b border-gray-200 last:border-b-0">
+                    <div className="flex items-center mb-2">
+                      <div className="flex items-center">
+                        {[...Array(5)].map((_, i) => (
+                          <svg
+                            key={i}
+                            className={`w-4 h-4 ${
+                              i < review.rating
+                                ? "text-yellow-400"
+                                : "text-gray-300"
+                            }`}
+                            fill="currentColor"
+                            viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                          </svg>
+                        ))}
+                      </div>
+                      <span className="ml-2 text-sm text-gray-500">
+                        {formatDate(review.date)}
                       </span>
+                    </div>
+                    <p className="text-sm font-medium text-gray-900 dark:text-white">
+                      {review.reviewerName}
                     </p>
-                    <p className="text-sm">
-                      <span className="font-medium text-gray-900 dark:text-white">
-                        Weight:
-                      </span>{" "}
-                      <span className="text-gray-500 dark:text-gray-400">
-                        {product.weight}g
-                      </span>
-                    </p>
-                    <p className="text-sm">
-                      <span className="font-medium text-gray-900 dark:text-white">
-                        Dimensions:
-                      </span>{" "}
-                      <span className="text-gray-500 dark:text-gray-400">
-                        {product.dimensions.width} × {product.dimensions.height}{" "}
-                        × {product.dimensions.depth} cm
-                      </span>
-                    </p>
-                    <p className="text-sm">
-                      <span className="font-medium text-gray-900 dark:text-white">
-                        Warranty:
-                      </span>{" "}
-                      <span className="text-gray-500 dark:text-gray-400">
-                        {product.warrantyInformation}
-                      </span>
-                    </p>
-                    <p className="text-sm">
-                      <span className="font-medium text-gray-900 dark:text-white">
-                        Shipping:
-                      </span>{" "}
-                      <span className="text-gray-500 dark:text-gray-400">
-                        {product.shippingInformation}
-                      </span>
-                    </p>
-                    <p className="text-sm">
-                      <span className="font-medium text-gray-900 dark:text-white">
-                        Return Policy:
-                      </span>{" "}
-                      <span className="text-gray-500 dark:text-gray-400">
-                        {product.returnPolicy}
-                      </span>
+                    <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                      {review.comment}
                     </p>
                   </div>
-                </div>
-              )}
-
-              {activeTab === "reviews" && (
-                <div className="space-y-4">
-                  {product.reviews &&
-                    product.reviews.map((review, index) => (
-                      <div
-                        key={index}
-                        className="border-b border-gray-200 pb-4 last:border-0"
-                      >
-                        <div className="flex items-center gap-2 mb-2">
-                          <div className="flex">
-                            {[...Array(5)].map((_, i) => (
-                              <svg
-                                key={i}
-                                className={`w-4 h-4 ${
-                                  i < review.rating
-                                    ? "text-yellow-400"
-                                    : "text-gray-300"
-                                }`}
-                                fill="currentColor"
-                                viewBox="0 0 20 20"
-                              >
-                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                              </svg>
-                            ))}
-                          </div>
-                          <span className="text-sm font-medium text-gray-900 dark:text-white">
-                            {review.reviewerName}
-                          </span>
-                          <span className="text-sm text-gray-500">
-                            {new Date(review.date).toLocaleDateString()}
-                          </span>
-                        </div>
-                        <p className="text-gray-600 dark:text-gray-300">
-                          {review.comment}
-                        </p>
-                      </div>
-                    ))}
-                </div>
-              )}
-            </div>
-
-            {/* Add to Cart Button */}
-            <div className="mt-8">
-              <button
-                type="button"
-                className="w-full bg-primary-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
-              >
-                Add to Cart
-              </button>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -290,4 +306,4 @@ const ProductDetails = () => {
   );
 };
 
-export default ProductDetails;
+export default ProductsDetails;

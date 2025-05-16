@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-const UseOnlineStatus = () => {
+const useOnlineStatus = () => {
     const [status, setStatus] = useState(navigator.onLine); //Default Status
     useEffect(()=>{
         addEventListener("online",()=>{
@@ -13,4 +13,4 @@ const UseOnlineStatus = () => {
     return status
 }
 
-export default UseOnlineStatus
+export default useOnlineStatus

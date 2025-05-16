@@ -1,28 +1,30 @@
 import { useState } from "react";
-import { stringify } from "uuid";
 
 const Comment = () => {
   const [name, setName] = useState();
   const [comment, setComment] = useState();
 
-  //Object - Optimizing or Reducing the fields
+  // Object - Optimizing or Reducing the Fields
   const [message, setMessage] = useState({ name: "", comment: "" });
 
-  const [data, setData] = useState([]);
-  console.log("Name:", name, "Comment:", comment);
+  const [data, setData] = useState([]); // [{},{},{},{}] // 
+
+  console.log("Name:", name, "Message:", comment);
+
   return (
     <>
       <div className="flex flex-col justify-center items-center h-screen">
         <p>Comment Component</p>
-
-        <div className=" flex flex-col w-[300px] py-5">
+        <div className="flex flex-col w-[300px] py-5">
           <label htmlFor="name">Name</label>
           <input
             type="text"
             id="name"
             className="border border-red-500"
             onChange={(e) => {
+              console.log(e.target.value);
               setName(e.target.value);
+
               setMessage((items) => {
                 return { ...items, name: e.target.value };
               });
@@ -30,7 +32,7 @@ const Comment = () => {
           />
         </div>
 
-        <div className=" flex flex-col w-[300px] py-5">
+        <div className="flex flex-col w-[300px] py-5">
           <label htmlFor="comment">Comment</label>
           <textarea
             id="comment"
@@ -40,18 +42,16 @@ const Comment = () => {
               setMessage((items) => {
                 return { ...items, comment: e.target.value };
               });
-            }}
-          ></textarea>
+            }}></textarea>
         </div>
 
         <button
           onClick={() => {
-            return setData((items)=>[...items,message]);
-          }}
-          className="bg-red-500 text-white py-1 px-4 rounded-lg"
-        >
+            return setData((items)=>[...items,message]); // [{},{},{},{},{}]
+          }}>
           Submit
         </button>
+
         {JSON.stringify(message)}
         <br />
         {JSON.stringify(data)}
@@ -59,4 +59,5 @@ const Comment = () => {
     </>
   );
 };
+
 export default Comment;

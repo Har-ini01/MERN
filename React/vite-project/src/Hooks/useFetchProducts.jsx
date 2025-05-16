@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import ProductLayout from "../ProductLayout/ProductLayout";
+import ProductLayout from "../components/ProductLayout/ProductLayout";
 
 export const useFetchProducts = () => {
   const [productData, setProductData] = useState([]);

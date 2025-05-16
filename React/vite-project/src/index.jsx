@@ -9,7 +9,7 @@ import Comment from "./components/Comment/Comment";
 import Error from "./components/Error/Error";
 import {createBrowserRouter, Outlet, RouterProvider} from "react-router-dom";
 import ProductDetails from "./components/ProductDetails/ProductDetails";
-import Image from "./components/Image/image";
+import Image from "./components/Image/Image"
 import ComponentA from "./components/PropDrilling/ComponentA";
 const AppLayout = () => {
   return (

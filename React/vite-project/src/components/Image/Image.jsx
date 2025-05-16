@@ -1,5 +1,5 @@
 import React from "react";
-import assest from "../../assests/1.png";
+//import assest from "../../assests/1.png";
 import { beauty } from "../../assests/images";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
